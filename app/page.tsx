@@ -5,27 +5,27 @@ import { ProductCard } from "@/components/ProductCard";
 import { SectionTitle } from "@/components/SectionTitle";
 
 const navItems = [
-  ["Concept", "#concept"],
-  ["Story", "#story"],
-  ["Products", "#products"],
-  ["Producers", "#producers"],
-  ["Marche", "#marche"],
-  ["Contact", "#contact"],
+  ["理念", "#concept"],
+  ["物語", "#story"],
+  ["商品", "#products"],
+  ["生産者", "#producers"],
+  ["マルシェ", "#marche"],
+  ["お問い合わせ", "#contact"],
 ];
 
 const coreValues = [
   {
-    label: "Water",
+    label: "水脈",
     title: "射水。水を射るという名の地。",
     text: "霊峰立山の雪解け水は地下を巡り、長い時間をかけて浄化され、この土地に湧き出します。水が矢のように駆け抜ける、その清流こそが野菜の起源です。",
   },
   {
-    label: "Stars",
+    label: "星読",
     title: "星と土の対話。",
     text: "古代、農は星や月のリズムと共にありました。自然のサイクルに耳を澄ませることで、作物は本来の生命力を宿し、野菜は軽やかな力を取り戻します。",
   },
   {
-    label: "Care",
+    label: "養土",
     title: "傷ついた大地を癒やす「手」。",
     text: "自然栽培は、肥料や農薬に頼らず土本来の力を取り戻す引き算の農法。土を癒やすことが、食べる人の心身を整えることへとつながっていきます。",
   },
@@ -87,7 +87,7 @@ export default function Home() {
             className="hidden rounded-full border border-sagittarius-gold/70 px-5 py-2 text-xs font-semibold tracking-[0.22em] text-white transition hover:bg-sagittarius-gold hover:text-sagittarius-navy md:inline-flex"
             href="#contact"
           >
-            Contact
+            お問い合わせ
           </a>
         </div>
       </header>
@@ -157,7 +157,7 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div className="scroll-reveal">
             <SectionTitle
-              eyebrow="Origin"
+              eyebrow="はじまり"
               title="射水。水を射るという名の地。"
               lead="立山連峰から富山湾へ、一筋の水の軌道。豊かな自然のエネルギーが収束する、命の的の真ん中にこのブランドは生まれました。"
             />
@@ -180,7 +180,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
           <SectionTitle
             align="center"
-            eyebrow="Core Values"
+            eyebrow="三つの核心"
             title="水、星、土がひらく三つの核心。"
             lead="射水の風土、天体と農の記憶、そして土を癒やす手。ブランドの世界観を支える核を、静かなカードとしてまとめました。"
           />
@@ -212,7 +212,7 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[1fr_0.95fr] lg:items-start">
           <div className="scroll-reveal">
             <SectionTitle
-              eyebrow="Story"
+              eyebrow="物語"
               title="「射水」を翻訳する、イタリアの響き。"
               lead="サジタリオは、イタリア語で射手座を意味します。矢を放つ星座の名に、射水の清らかな水を重ね、野菜という一矢に乗せて食卓へ射抜く。そこに、イタリアのスローフード哲学を重ねました。"
             />
@@ -230,7 +230,7 @@ export default function Home() {
           <div className="scroll-reveal grid gap-6">
             <article className="overflow-hidden rounded-[1.5rem] border border-sagittarius-water/35 bg-sagittarius-navy p-8 text-white shadow-soft">
               <p className="text-xs font-semibold uppercase tracking-[0.32em] text-sagittarius-water">
-                Place
+                土地の記憶
               </p>
               <h3 className="serif-heading mt-4 text-3xl font-semibold leading-[1.45]">
                 日本のベニス、射水。
@@ -244,7 +244,7 @@ export default function Home() {
             </article>
             <article className="overflow-hidden rounded-[1.5rem] border border-sagittarius-water/35 bg-white p-8 shadow-soft">
               <p className="text-xs font-semibold uppercase tracking-[0.32em] text-sagittarius-gold">
-                Symbol
+                象徴
               </p>
               <h3 className="serif-heading mt-4 text-3xl font-semibold leading-[1.45] text-sagittarius-navy">
                 地理的な「真ん中」を超えた、
@@ -265,7 +265,7 @@ export default function Home() {
         <div className="relative z-10 mx-auto max-w-7xl">
           <SectionTitle
             align="center"
-            eyebrow="Myth & Tradition"
+            eyebrow="神話と伝承"
             light
             title="古の祈りと、射手座の知恵を現代の農へ。"
             lead="1000年続く流鏑馬神事の一矢、古代農耕と天体の関係、そしてケイローンの象徴性。水のサジタリオは、神話と土地の記憶を現代の食卓へ翻訳します。"
@@ -316,7 +316,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
           <SectionTitle
             align="center"
-            eyebrow="Products"
+            eyebrow="商品"
             title="射水から届く、まっすぐな一矢。"
             lead="今後の展開を見据えながら、野菜、椎茸、はちみつ、加工品、ギフトセットへ。土地の清流と強いこだわりを、暮らしのかたちに変えて届けます。"
           />
@@ -333,7 +333,7 @@ export default function Home() {
         <div className="relative z-10 mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
           <div className="scroll-reveal">
             <SectionTitle
-              eyebrow="Producers"
+              eyebrow="生産者"
               light
               title="射手は、強いこだわりを持つ農家たち。"
               lead="妥協なき栽培技術。土への執着。私たちの農業は静かな闘いです。その強いこだわりこそが、弓を引き絞る力になります。"
@@ -367,7 +367,7 @@ export default function Home() {
             <div className="absolute bottom-10 left-8 h-px w-56 bg-sagittarius-gold/60" />
             <div className="absolute bottom-8 right-8 max-w-[14rem] rounded-[1.4rem] border border-white/60 bg-white/88 p-5 shadow-soft">
               <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sagittarius-gold">
-                Ripple
+                波紋
               </p>
               <p className="mt-3 serif-heading text-2xl font-semibold leading-[1.5] text-sagittarius-navy">
                 波紋のように
@@ -381,7 +381,7 @@ export default function Home() {
           </div>
           <div className="scroll-reveal">
             <SectionTitle
-              eyebrow="Marche / Wellness"
+              eyebrow="マルシェ / 整う暮らし"
               title="食卓からはじまる、整いの連鎖。"
               lead="的に命中した矢が水面に波紋を広げるように、射水で生まれた野菜は個人の中から家族、そして社会全体へと健康の余韻を広げていきます。"
             />
@@ -393,7 +393,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
           <SectionTitle
             align="center"
-            eyebrow="Brand Goods"
+            eyebrow="ブランドグッズ"
             title="暮らしに寄り添う、世界観のかけら。"
             lead="ロゴや弓矢、水紋の余韻をまとったTシャツ、トート、包装資材まで。ブランドが日常に静かに溶け込む展開を見せます。"
           />
@@ -443,10 +443,10 @@ export default function Home() {
           </p>
           <div className="flex gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-white/64">
             <a className="transition hover:text-sagittarius-water" href="#">
-              Instagram
+              インスタグラム
             </a>
             <a className="transition hover:text-sagittarius-water" href="#">
-              X
+              エックス
             </a>
           </div>
         </div>

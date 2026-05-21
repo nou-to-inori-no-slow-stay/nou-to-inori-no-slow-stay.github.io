@@ -10,7 +10,7 @@ export function ProducerCard({ name, subtitle, description }: ProducerCardProps)
       <div className="absolute right-0 top-0 h-40 w-40 -translate-y-1/3 translate-x-1/3 rounded-full border border-sagittarius-water/30" />
       <div className="relative z-10">
         <p className="text-xs font-semibold uppercase tracking-[0.32em] text-sagittarius-water">
-          Producer
+          生産者
         </p>
         <h3 className="serif-heading mt-4 text-3xl font-semibold">{name}</h3>
         <p className="mt-3 text-sm font-medium tracking-[0.08em] text-sagittarius-gold">

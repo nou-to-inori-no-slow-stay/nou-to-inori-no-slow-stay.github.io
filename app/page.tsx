@@ -69,7 +69,7 @@ export default function Home() {
     <main className="overflow-hidden bg-sagittarius-porcelain">
       <header className="fixed inset-x-0 top-0 z-50 border-b border-white/12 bg-sagittarius-navy/88 backdrop-blur-xl">
         <div className="mx-auto flex h-[var(--header-height)] max-w-7xl items-center justify-between px-5 md:px-8">
-          <a aria-label="水のサジタリオ トップへ" href="#top">
+          <a aria-label="水のサジタリオ トップへ" className="relative translate-y-1" href="#top">
             <Logo compact inverted />
           </a>
           <nav aria-label="主要ナビゲーション" className="hidden items-center gap-7 lg:flex">

@@ -347,20 +347,27 @@ export default function Home() {
 
       <section className="relative bg-sagittarius-deep px-5 py-24 text-white md:px-8 md:py-32" id="producers">
         <div className="absolute inset-0 water-texture opacity-20" />
-        <div className="relative z-10 mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+        <div className="relative z-10 mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <div className="scroll-reveal">
             <SectionTitle
               eyebrow="生産者"
               light
               title="射手は、強いこだわりを持つ農家たち。"
-              lead="妥協なき栽培技術。土への執着。私たちの農業は静かな闘いです。その強いこだわりこそが、弓を引き絞る力になります。"
+              lead="妥協なき栽培技術。土への執着。私たちの農業は静かな闘いです。その強いこだわりこそが、弓を引き絞る力になります。子どもや家族の暮らしに寄り添う視点もまた、水のサジタリオを支える大切な力です。"
             />
           </div>
-          <ProducerCard
-            name="marufarm"
-            subtitle="射水の水と土を信じ、野菜・椎茸・はちみつを届ける生産者"
-            description="自然の力を人の都合で押し切らず、季節の声を聞きながら少しずつ整える。水のサジタリオの思想に共鳴し、土地の恵みを食卓へまっすぐ届けます。"
-          />
+          <div className="grid gap-6">
+            <ProducerCard
+              name="marufarm"
+              subtitle="射水の水と土を信じ、野菜・椎茸・はちみつを届ける生産者"
+              description="自然の力を人の都合で押し切らず、季節の声を聞きながら少しずつ整える。水のサジタリオの思想に共鳴し、土地の恵みを食卓へまっすぐ届けます。"
+            />
+            <ProducerCard
+              name="射水市自然農園"
+              subtitle="代表：石垣孝太。子どもと家族の食卓に寄り添う、有機農業の実践者"
+              description="2025年4月に射水市内小学校教員から有機農業の世界へ。自然の中で育った野菜を、射水の大地で育つ子どもたちへ届けたいという思いを軸に、子育て中のお父さん・お母さんに伴走する事業づくりにも取り組んでいます。『土とあそんで、おいしく食べる。』という感覚を、日々の暮らしへひらく生産者です。"
+            />
+          </div>
         </div>
       </section>
 

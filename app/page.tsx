@@ -1,6 +1,7 @@
 import { BrandGoods } from "@/components/BrandGoods";
 import { Logo } from "@/components/Logo";
 import { ProducerCard } from "@/components/ProducerCard";
+import { ProducerStickerShowcase } from "@/components/ProducerStickerShowcase";
 import { ProductCard } from "@/components/ProductCard";
 import { SectionTitle } from "@/components/SectionTitle";
 import Image from "next/image";
@@ -385,16 +386,8 @@ export default function Home() {
             title="畑ごとの個性に、水のサジタリオの一枚を。"
             lead="marufarm、射水自然農園、はなわっか畑。それぞれの商品に各ブランドのしるしと、水のサジタリオのブランドシールが重なることで、土地の個性と共通の世界観がひとつの景色になります。"
           />
-          <div className="mt-14 overflow-hidden rounded-[1.6rem] border border-white/70 bg-white/85 shadow-soft">
-            <div className="relative aspect-[16/10] w-full md:aspect-[16/8.4]">
-              <Image
-                alt="marufarm、射水自然農園、はなわっか畑の商品に各ブランドシールと水のサジタリオのブランドシールが貼られたイメージ"
-                className="object-cover"
-                fill
-                sizes="(min-width: 1024px) 1120px, 100vw"
-                src="/producer-stickers-scene.png"
-              />
-            </div>
+          <div className="mt-14">
+            <ProducerStickerShowcase />
           </div>
         </div>
       </section>

@@ -377,6 +377,28 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="bg-white px-5 py-24 md:px-8 md:py-32">
+        <div className="mx-auto max-w-7xl">
+          <SectionTitle
+            align="center"
+            eyebrow="生産者のしるし"
+            title="畑ごとの個性に、水のサジタリオの一枚を。"
+            lead="marufarm、射水自然農園、はなわっか畑。それぞれの商品に各ブランドのしるしと、水のサジタリオのブランドシールが重なることで、土地の個性と共通の世界観がひとつの景色になります。"
+          />
+          <div className="mt-14 overflow-hidden rounded-[1.6rem] border border-white/70 bg-white/85 shadow-soft">
+            <div className="relative aspect-[16/10] w-full md:aspect-[16/8.4]">
+              <Image
+                alt="marufarm、射水自然農園、はなわっか畑の商品に各ブランドシールと水のサジタリオのブランドシールが貼られたイメージ"
+                className="object-cover"
+                fill
+                sizes="(min-width: 1024px) 1120px, 100vw"
+                src="/producer-stickers-scene.png"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="bg-white px-5 py-24 md:px-8 md:py-32" id="marche">
         <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div className="scroll-reveal relative min-h-[34rem] overflow-hidden rounded-[1.5rem] border border-sagittarius-water/40 bg-sagittarius-mist shadow-soft">

@@ -139,6 +139,13 @@ const heroStats = [
   },
 ];
 
+const locationItems = [
+  { icon: <MapPin className="h-5 w-5" />, label: "射水市水戸田・青井谷" },
+  { icon: <Sprout className="h-5 w-5" />, label: "自然栽培の田んぼと畑" },
+  { icon: <Heart className="h-5 w-5" />, label: "匠の里での陶芸体験" },
+  { icon: <Users className="h-5 w-5" />, label: "地元の人との語らい" },
+];
+
 type SectionTitleProps = {
   eyebrow: string;
   title: string;
@@ -156,7 +163,7 @@ function SectionTitle({ eyebrow, title, body, light = false }: SectionTitleProps
       transition={{ duration: 0.6 }}
       className="mx-auto mb-12 max-w-3xl text-center"
     >
-      <p className={`mb-3 text-sm font-semibold tracking-[0.28em] ${light ? "text-amber-300" : "text-amber-700"}`}>
+      <p className={`mb-3 text-sm font-semibold ${light ? "text-emerald-200" : "text-teal-700"}`}>
         {eyebrow}
       </p>
       <h2 className={`text-3xl font-semibold leading-tight md:text-5xl ${light ? "text-white" : "text-slate-950"}`}>
@@ -185,9 +192,9 @@ function Pillar({ icon, title, text }: PillarProps) {
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.55 }}
-      className="rounded-3xl border border-white/70 bg-white/70 p-6 shadow-sm backdrop-blur"
+      className="group border border-teal-900/10 bg-white/85 p-6 shadow-[0_20px_70px_rgba(5,34,45,0.08)] backdrop-blur"
     >
-      <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-950 text-white">
+      <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-slate-950 to-teal-900 text-emerald-100 shadow-lg shadow-teal-950/20">
         {icon}
       </div>
       <h3 className="mb-3 text-xl font-semibold text-slate-950">{title}</h3>
@@ -198,109 +205,119 @@ function Pillar({ icon, title, text }: PillarProps) {
 
 export default function Home() {
   return (
-    <main className="min-h-screen overflow-hidden bg-[#f7f1e7] text-slate-950">
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(180,119,62,0.20),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(21,38,62,0.22),transparent_38%)]" />
-        <div className="absolute left-1/2 top-20 h-[520px] w-[520px] -translate-x-1/2 rounded-full border border-white/50 opacity-50" />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 md:grid-cols-[1.05fr_0.95fr] md:px-10 md:py-28">
-          <motion.div variants={fadeUp} initial="hidden" animate="visible" transition={{ duration: 0.7 }}>
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-amber-800/20 bg-white/70 px-4 py-2 text-sm font-medium text-amber-800 shadow-sm backdrop-blur">
+    <main className="min-h-screen overflow-hidden bg-[#f4f8f5] text-slate-950">
+      <section className="relative min-h-[88svh] overflow-hidden bg-slate-950 text-white">
+        <img
+          src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2200&q=85"
+          alt="青緑の田園風景と朝霧のイメージ"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,18,27,0.92)_0%,rgba(3,42,52,0.72)_46%,rgba(10,69,58,0.38)_100%)]" />
+        <div className="absolute inset-x-0 top-0 z-20 border-b border-white/10 bg-slate-950/25 backdrop-blur-md">
+          <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 md:px-10">
+            <a href="#top" className="font-semibold text-emerald-50">
+              水のサジタリオ
+            </a>
+            <nav aria-label="ページ内ナビゲーション" className="hidden items-center gap-7 text-sm text-white/80 md:flex">
+              <a href="#experience" className="transition hover:text-emerald-200">
+                体験
+              </a>
+              <a href="#itinerary" className="transition hover:text-emerald-200">
+                旅程
+              </a>
+              <a href="#reserve" className="transition hover:text-emerald-200">
+                相談
+              </a>
+            </nav>
+          </div>
+        </div>
+
+        <div id="top" className="relative z-10 mx-auto flex min-h-[88svh] max-w-7xl items-end px-6 pb-14 pt-28 md:px-10">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            transition={{ duration: 0.75 }}
+            className="max-w-4xl"
+          >
+            <div className="mb-6 inline-flex items-center gap-2 border border-emerald-200/30 bg-white/10 px-4 py-2 text-sm font-medium text-emerald-100 backdrop-blur">
               <Stars className="h-4 w-4" />
               水のサジタリオ presents
             </div>
-            <h1 className="text-5xl font-semibold leading-[1.08] tracking-tight text-slate-950 md:text-7xl">
+            <h1 className="text-5xl font-semibold leading-[1.08] text-white md:text-7xl">
               農と祈りの
               <br />
               リトリート
             </h1>
-            <p className="mt-6 max-w-2xl text-xl leading-9 text-slate-700">
+            <p className="mt-6 max-w-2xl text-lg leading-9 text-emerald-50/90 md:text-xl">
               水・土・火・香りに還る、2泊3日。射水市水戸田・青井谷を舞台に、自然栽培の食、田んぼの土の器、焚火、バラ、へちま、地元の人との語らいを味わう農泊ウェルネスツアー。
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <a
                 href="#reserve"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-slate-950 px-7 py-4 text-base font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-slate-800"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-200 px-7 py-4 text-base font-semibold text-slate-950 shadow-xl shadow-emerald-950/25 transition hover:-translate-y-0.5 hover:bg-white"
               >
                 モニター相談をする
                 <ArrowRight className="h-5 w-5" />
               </a>
               <a
                 href="#itinerary"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-950/15 bg-white/70 px-7 py-4 text-base font-semibold text-slate-950 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:bg-white"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-7 py-4 text-base font-semibold text-white backdrop-blur transition hover:-translate-y-0.5 hover:bg-white/15"
               >
                 旅程を見る
               </a>
             </div>
-            <div className="mt-10 grid max-w-2xl gap-3 text-center sm:grid-cols-3">
-              {heroStats.map((stat) => (
-                <div key={stat.label} className="rounded-2xl bg-white/60 p-4 shadow-sm backdrop-blur">
-                  <div className="mx-auto mb-2 flex h-9 w-9 items-center justify-center rounded-full bg-amber-100 text-amber-800">
-                    {stat.icon}
-                  </div>
-                  <p className="text-sm text-slate-500">{stat.label}</p>
-                  <p className="mt-1 font-semibold">{stat.value}</p>
-                </div>
-              ))}
-            </div>
           </motion.div>
+        </div>
+      </section>
 
+      <section className="border-y border-teal-900/10 bg-white">
+        <div className="mx-auto grid max-w-7xl gap-px bg-teal-900/10 md:grid-cols-3">
+          {heroStats.map((stat) => (
+            <div key={stat.label} className="bg-white px-6 py-7 md:px-10">
+              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-teal-50 text-teal-800">
+                {stat.icon}
+              </div>
+              <p className="text-sm text-slate-500">{stat.label}</p>
+              <p className="mt-1 text-xl font-semibold text-slate-950">{stat.value}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="px-6 py-20 md:px-10">
+        <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-[0.9fr_1.1fr] md:items-center">
           <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="relative"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
           >
-            <div className="rounded-[2rem] border border-white/70 bg-white/45 p-4 shadow-2xl backdrop-blur">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-slate-900">
-                <img
-                  src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80"
-                  alt="里山の夕暮れと農泊リトリートのイメージ"
-                  className="h-full w-full object-cover opacity-90"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/10 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-7 text-white">
-                  <p className="mb-2 text-sm tracking-[0.22em] text-amber-200">RETREAT IN IMIZU</p>
-                  <p className="text-2xl font-semibold leading-snug">土の器、朝摘みのバラ、星火の語らい。</p>
-                </div>
-              </div>
-            </div>
-            <div className="absolute -bottom-6 -left-6 hidden rounded-3xl bg-white p-5 shadow-xl md:block">
-              <div className="flex items-center gap-3">
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-amber-100 text-amber-800">
-                  <Flame className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="text-sm text-slate-500">Signature</p>
-                  <p className="font-semibold">星火BBQ</p>
-                </div>
-              </div>
-            </div>
+            <p className="mb-3 text-sm font-semibold text-teal-700">CONCEPT</p>
+            <h2 className="text-3xl font-semibold leading-tight text-slate-950 md:text-5xl">
+              深い青に沈み、緑の気配でほどけていく。
+            </h2>
+          </motion.div>
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.08 }}
+            className="border-l border-teal-900/20 pl-6 text-lg leading-9 text-slate-700 md:pl-10"
+          >
+            <p>
+              marufarmの田んぼの土を使って器をつくり、同じ田んぼで育った自然栽培米をおむすびにして味わう。朝は焚火でコーヒーを淹れ、夜は火を囲んで地元の人と語り合う。
+            </p>
+            <p className="mt-5">
+              農作業を体験するだけではなく、食べること、つくること、祈ることをもう一度丁寧に取り戻す。水のサジタリオが届ける、射水の水と土に還るための2泊3日です。
+            </p>
           </motion.div>
         </div>
       </section>
 
-      <section className="px-6 py-20 md:px-10">
-        <div className="mx-auto max-w-6xl rounded-[2rem] bg-slate-950 p-8 text-white shadow-xl md:p-14">
-          <div className="grid gap-10 md:grid-cols-[0.8fr_1.2fr] md:items-center">
-            <div>
-              <p className="mb-4 text-sm font-semibold tracking-[0.28em] text-amber-300">CONCEPT</p>
-              <h2 className="text-3xl font-semibold leading-tight md:text-5xl">
-                土を器に。米を祈りに。火を語らいに。
-              </h2>
-            </div>
-            <div className="text-lg leading-9 text-slate-200">
-              <p>
-                marufarmの田んぼの土を使って器をつくり、同じ田んぼで育った自然栽培米をおむすびにして味わう。朝は焚火でコーヒーを淹れ、夜は火を囲んで地元の人と語り合う。
-              </p>
-              <p className="mt-5">
-                農作業を体験するだけではなく、食べること、つくること、祈ることをもう一度丁寧に取り戻す。水のサジタリオが届ける、射水の水と土に還るための2泊3日です。
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="px-6 py-20 md:px-10">
+      <section className="bg-[#eaf3ee] px-6 py-20 md:px-10">
         <SectionTitle
           eyebrow="SEVEN ELEMENTS"
           title="水・土・米・火・香り・命・浄化"
@@ -340,7 +357,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-white/55 px-6 py-20 md:px-10">
+      <section id="experience" className="bg-white px-6 py-20 md:px-10">
         <SectionTitle
           eyebrow="EXPERIENCE"
           title="この旅でしか味わえない体験"
@@ -355,9 +372,9 @@ export default function Home() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.55, delay: index * 0.04 }}
-              className="rounded-3xl border border-slate-950/10 bg-white p-7 shadow-sm"
+              className="border border-teal-900/10 bg-[#fbfdfb] p-7 shadow-[0_18px_55px_rgba(5,34,45,0.06)]"
             >
-              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#f2e4cf] text-amber-800">
+              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-teal-900 text-emerald-100">
                 {item.icon}
               </div>
               <h3 className="mb-3 text-xl font-semibold text-slate-950">{item.title}</h3>
@@ -375,12 +392,12 @@ export default function Home() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
-            className="overflow-hidden rounded-[2rem] shadow-xl"
+            className="overflow-hidden shadow-[0_28px_90px_rgba(5,34,45,0.16)]"
           >
             <img
               src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80"
               alt="焚火と料理のイメージ"
-              className="h-[540px] w-full object-cover"
+              className="h-[520px] w-full object-cover"
             />
           </motion.div>
           <motion.div
@@ -390,21 +407,21 @@ export default function Home() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <p className="mb-3 text-sm font-semibold tracking-[0.28em] text-amber-700">FOOD EXPERIENCE</p>
+            <p className="mb-3 text-sm font-semibold text-teal-700">FOOD EXPERIENCE</p>
             <h2 className="text-3xl font-semibold leading-tight md:text-5xl">
               山の命と畑の恵みを、火でいただく。
             </h2>
             <p className="mt-5 text-lg leading-9 text-slate-700">
               旅の食事は、豪華さよりも「物語のある食卓」を大切に。自然栽培米、自然栽培野菜、バラ、へちま、ジビエを組み合わせ、射水の水と土から生まれる食体験として提供します。
             </p>
-            <div className="mt-7 inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-2 text-sm font-semibold text-amber-800 shadow-sm">
+            <div className="mt-7 inline-flex items-center gap-2 border border-teal-900/15 bg-white px-4 py-2 text-sm font-semibold text-teal-800 shadow-sm">
               <Wine className="h-4 w-4" />
               季節の香りを閉じ込めたドリンクもご用意します
             </div>
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
               {foodMenu.map((item) => (
-                <div key={item} className="flex items-start gap-3 rounded-2xl bg-white/70 p-4 shadow-sm">
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-amber-700" />
+                <div key={item} className="flex items-start gap-3 border border-teal-900/10 bg-white p-4 shadow-sm">
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-teal-700" />
                   <p className="font-medium text-slate-800">{item}</p>
                 </div>
               ))}
@@ -413,7 +430,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="itinerary" className="bg-slate-950 px-6 py-20 text-white md:px-10">
+      <section id="itinerary" className="bg-[#061a23] px-6 py-20 text-white md:px-10">
         <SectionTitle
           eyebrow="2 NIGHTS 3 DAYS"
           title="旅の流れ"
@@ -429,16 +446,16 @@ export default function Home() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.55, delay: index * 0.08 }}
-              className="rounded-3xl border border-white/10 bg-white/[0.06] p-7 shadow-sm backdrop-blur"
+              className="border border-emerald-100/12 bg-white/[0.06] p-7 shadow-sm backdrop-blur"
             >
-              <div className="mb-5 inline-flex rounded-full bg-amber-300 px-4 py-2 text-sm font-bold text-slate-950">
+              <div className="mb-5 inline-flex border border-emerald-200/35 bg-emerald-100 px-4 py-2 text-sm font-bold text-slate-950">
                 {day.day}
               </div>
               <h3 className="mb-6 text-2xl font-semibold">{day.theme}</h3>
               <ul className="space-y-4 text-slate-200">
                 {day.items.map((item) => (
                   <li key={item} className="flex gap-3 leading-7">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300" />
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-200" />
                     {item}
                   </li>
                 ))}
@@ -457,7 +474,7 @@ export default function Home() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
           >
-            <p className="mb-3 text-sm font-semibold tracking-[0.28em] text-amber-700">PLAN</p>
+            <p className="mb-3 text-sm font-semibold text-teal-700">PLAN</p>
             <h2 className="text-3xl font-semibold leading-tight md:text-5xl">
               1日1組限定。深く味わうための農泊リトリート。
             </h2>
@@ -472,22 +489,22 @@ export default function Home() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="rounded-[2rem] border border-slate-950/10 bg-white p-8 shadow-xl md:p-10"
+            className="border border-teal-900/10 bg-white p-8 shadow-[0_28px_90px_rgba(5,34,45,0.12)] md:p-10"
           >
             <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <p className="text-sm font-semibold tracking-[0.2em] text-amber-700">RETREAT PLAN</p>
+                <p className="text-sm font-semibold text-teal-700">RETREAT PLAN</p>
                 <h3 className="mt-2 text-2xl font-semibold">農と祈りのリトリート</h3>
               </div>
-              <div className="rounded-2xl bg-[#f2e4cf] px-4 py-3 text-left sm:text-right">
+              <div className="border border-emerald-900/10 bg-[#edf8f1] px-4 py-3 text-left sm:text-right">
                 <p className="text-sm text-slate-600">1組</p>
                 <p className="text-2xl font-bold">¥100,000〜</p>
               </div>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
               {included.map((item) => (
-                <div key={item} className="flex items-start gap-3 rounded-2xl bg-[#faf6ee] p-4">
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-amber-700" />
+                <div key={item} className="flex items-start gap-3 bg-[#f6faf7] p-4">
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-teal-700" />
                   <p className="text-sm font-medium leading-6 text-slate-800">{item}</p>
                 </div>
               ))}
@@ -499,21 +516,16 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-white/55 px-6 py-20 md:px-10">
+      <section className="bg-white px-6 py-20 md:px-10">
         <SectionTitle
           eyebrow="LOCATION"
           title="舞台は、射水市水戸田・青井谷エリア"
           body="田んぼ、畑、陶芸、里山、人の営みが近い距離で重なる場所。水のサジタリオの世界観を、地域全体で体験するためのフィールドです。"
         />
         <div className="mx-auto grid max-w-7xl gap-5 md:grid-cols-4">
-          {[
-            { icon: <MapPin className="h-5 w-5" />, label: "射水市水戸田・青井谷" },
-            { icon: <Sprout className="h-5 w-5" />, label: "自然栽培の田んぼと畑" },
-            { icon: <Heart className="h-5 w-5" />, label: "匠の里での陶芸体験" },
-            { icon: <Users className="h-5 w-5" />, label: "地元の人との語らい" },
-          ].map((item) => (
-            <div key={item.label} className="rounded-3xl bg-white p-6 text-center shadow-sm">
-              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-950 text-white">
+          {locationItems.map((item) => (
+            <div key={item.label} className="border border-teal-900/10 bg-[#fbfdfb] p-6 text-center shadow-sm">
+              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-slate-950 text-emerald-100">
                 {item.icon}
               </div>
               <p className="font-semibold leading-7">{item.label}</p>
@@ -523,8 +535,8 @@ export default function Home() {
       </section>
 
       <section id="reserve" className="px-6 py-20 md:px-10">
-        <div className="mx-auto max-w-5xl rounded-[2rem] bg-gradient-to-br from-slate-950 to-slate-800 p-8 text-center text-white shadow-2xl md:p-14">
-          <Moon className="mx-auto mb-6 h-12 w-12 text-amber-300" />
+        <div className="mx-auto max-w-5xl bg-[#061a23] p-8 text-center text-white shadow-[0_32px_100px_rgba(5,34,45,0.24)] md:p-14">
+          <Moon className="mx-auto mb-6 h-12 w-12 text-emerald-200" />
           <h2 className="text-3xl font-semibold leading-tight md:text-5xl">まずは、モニター1組から。</h2>
           <p className="mx-auto mt-5 max-w-3xl text-lg leading-9 text-slate-200">
             季節、参加者の属性、地域の受入体制に合わせて内容を調整しながら、最初の1組限定モニターとして実施する想定です。写真、感想、改善点を集め、正式販売へつなげます。
@@ -532,7 +544,7 @@ export default function Home() {
           <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
             <a
               href="mailto:info@example.com?subject=%E8%BE%B2%E3%81%A8%E7%A5%88%E3%82%8A%E3%81%AE%E3%83%AA%E3%83%88%E3%83%AA%E3%83%BC%E3%83%88%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-amber-300 px-7 py-4 text-base font-bold text-slate-950 shadow-lg transition hover:-translate-y-0.5 hover:bg-amber-200"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-200 px-7 py-4 text-base font-bold text-slate-950 shadow-lg transition hover:-translate-y-0.5 hover:bg-white"
             >
               相談する
               <ArrowRight className="h-5 w-5" />
@@ -547,7 +559,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="border-t border-slate-950/10 px-6 py-10 md:px-10">
+      <footer className="border-t border-teal-900/10 px-6 py-10 md:px-10">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 text-sm text-slate-600 md:flex-row md:items-center md:justify-between">
           <p className="font-semibold text-slate-950">水のサジタリオ presents 農と祈りのリトリート</p>
           <p>© Mizuno Sagittario Retreat. All rights reserved.</p>

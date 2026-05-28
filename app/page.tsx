@@ -443,7 +443,7 @@ export default function Home() {
             className="overflow-hidden shadow-[0_28px_90px_rgba(5,34,45,0.16)]"
           >
             <img
-              src="/rose-harvest.png"
+              src="/food-experience-onigiri.png"
               alt="自然栽培の食と香りの体験イメージ"
               className="h-[520px] w-full object-cover"
             />

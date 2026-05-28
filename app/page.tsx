@@ -103,8 +103,7 @@ const itinerary = [
 const foodMenu = [
   "自然栽培米のおむすび",
   "自然栽培野菜の畑ピザ",
-  "自然栽培野菜とジビエの星火BBQ",
-  "イノシシ・シカなどのジビエ料理",
+  "土の器で味わう炊きたての野菜料理",
   "水のサジタリオ・ファームバーガー",
   "バラソーダ・ローズティー",
   "へちま茶・季節のハーブドリンク",
@@ -122,21 +121,9 @@ const included = [
 ];
 
 const heroStats = [
-  {
-    icon: <CalendarDays className="h-5 w-5" />,
-    label: "期間",
-    value: "2泊3日",
-  },
-  {
-    icon: <Users className="h-5 w-5" />,
-    label: "定員",
-    value: "1日1組限定",
-  },
-  {
-    icon: <Gift className="h-5 w-5" />,
-    label: "料金",
-    value: "1組10万円〜",
-  },
+  { icon: <CalendarDays className="h-5 w-5" />, label: "期間", value: "2泊3日" },
+  { icon: <Users className="h-5 w-5" />, label: "定員", value: "1日1組限定" },
+  { icon: <Gift className="h-5 w-5" />, label: "料金", value: "1組10万円〜" },
 ];
 
 const locationItems = [
@@ -163,16 +150,12 @@ function SectionTitle({ eyebrow, title, body, light = false }: SectionTitleProps
       transition={{ duration: 0.6 }}
       className="mx-auto mb-12 max-w-3xl text-center"
     >
-      <p className={`mb-3 text-sm font-semibold ${light ? "text-emerald-200" : "text-teal-700"}`}>
-        {eyebrow}
-      </p>
+      <p className={`mb-3 text-sm font-semibold ${light ? "text-emerald-200" : "text-teal-700"}`}>{eyebrow}</p>
       <h2 className={`text-3xl font-semibold leading-tight md:text-5xl ${light ? "text-white" : "text-slate-950"}`}>
         {title}
       </h2>
       {body ? (
-        <p className={`mt-5 text-base leading-8 md:text-lg ${light ? "text-slate-200" : "text-slate-700"}`}>
-          {body}
-        </p>
+        <p className={`mt-5 text-base leading-8 md:text-lg ${light ? "text-slate-200" : "text-slate-700"}`}>{body}</p>
       ) : null}
     </motion.div>
   );
@@ -192,7 +175,7 @@ function Pillar({ icon, title, text }: PillarProps) {
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.55 }}
-      className="group border border-teal-900/10 bg-white/85 p-6 shadow-[0_20px_70px_rgba(5,34,45,0.08)] backdrop-blur"
+      className="border border-teal-900/10 bg-white/85 p-6 shadow-[0_20px_70px_rgba(5,34,45,0.08)] backdrop-blur"
     >
       <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-slate-950 to-teal-900 text-emerald-100 shadow-lg shadow-teal-950/20">
         {icon}
@@ -209,7 +192,7 @@ export default function Home() {
       <section className="relative min-h-[88svh] overflow-hidden bg-slate-950 text-white">
         <img
           src="/meditation-field.png"
-          alt="青緑の田園風景と朝霧のイメージ"
+          alt="畑の上で瞑想しているリトリート参加者のイメージ"
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,18,27,0.92)_0%,rgba(3,42,52,0.72)_46%,rgba(10,69,58,0.38)_100%)]" />
@@ -233,13 +216,7 @@ export default function Home() {
         </div>
 
         <div id="top" className="relative z-10 mx-auto flex min-h-[88svh] max-w-7xl items-end px-6 pb-14 pt-28 md:px-10">
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.75 }}
-            className="max-w-4xl"
-          >
+          <motion.div variants={fadeUp} initial="hidden" animate="visible" transition={{ duration: 0.75 }} className="max-w-4xl">
             <div className="mb-6 inline-flex items-center gap-2 border border-emerald-200/30 bg-white/10 px-4 py-2 text-sm font-medium text-emerald-100 backdrop-blur">
               <Stars className="h-4 w-4" />
               水のサジタリオ presents
@@ -287,17 +264,9 @@ export default function Home() {
 
       <section className="px-6 py-20 md:px-10">
         <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-[0.9fr_1.1fr] md:items-center">
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-          >
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6 }}>
             <p className="mb-3 text-sm font-semibold text-teal-700">CONCEPT</p>
-            <h2 className="text-3xl font-semibold leading-tight text-slate-950 md:text-5xl">
-              深い青に沈み、緑の気配でほどけていく。
-            </h2>
+            <h2 className="text-3xl font-semibold leading-tight text-slate-950 md:text-5xl">深い青に沈み、緑の気配でほどけていく。</h2>
           </motion.div>
           <motion.div
             variants={fadeUp}
@@ -327,23 +296,11 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="overflow-hidden shadow-[0_28px_90px_rgba(5,34,45,0.14)]"
           >
-            <img
-              src="/meditation-field.png"
-              alt="畑の上で瞑想しているリトリート参加者のイメージ"
-              className="h-[520px] w-full object-cover"
-            />
+            <img src="/meditation-field.png" alt="畑の上で瞑想しているリトリート参加者のイメージ" className="h-[520px] w-full object-cover" />
           </motion.div>
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.08 }}
-          >
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6, delay: 0.08 }}>
             <p className="mb-3 text-sm font-semibold text-teal-700">PRAYER LANDSCAPE</p>
-            <h2 className="text-3xl font-semibold leading-tight text-slate-950 md:text-5xl">
-              畑の上で、呼吸をそろえる。
-            </h2>
+            <h2 className="text-3xl font-semibold leading-tight text-slate-950 md:text-5xl">畑の上で、呼吸をそろえる。</h2>
             <p className="mt-5 text-lg leading-9 text-slate-700">
               朝の光と土の匂いに包まれながら、ただ座って呼吸を整える時間。観光でも修行でもない、土地の気配に自分をひらいていく静かな入口です。
             </p>
@@ -356,17 +313,9 @@ export default function Home() {
 
       <section className="bg-[#f7fbf8] px-6 py-20 md:px-10">
         <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[0.95fr_1.05fr] md:items-center">
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-          >
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6 }}>
             <p className="mb-3 text-sm font-semibold text-teal-700">ROSE GATHERING</p>
-            <h2 className="text-3xl font-semibold leading-tight text-slate-950 md:text-5xl">
-              朝露をまとったバラを、自分の手で摘む。
-            </h2>
+            <h2 className="text-3xl font-semibold leading-tight text-slate-950 md:text-5xl">朝露をまとったバラを、自分の手で摘む。</h2>
             <p className="mt-5 text-lg leading-9 text-slate-700">
               光がやわらかいうちに畑へ入り、香りのいちばん豊かな瞬間をすくい上げるように花を摘んでいく体験です。籠に少しずつ集まる色と香りが、旅の記憶そのものになっていきます。
             </p>
@@ -382,11 +331,7 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.08 }}
             className="overflow-hidden shadow-[0_28px_90px_rgba(5,34,45,0.14)]"
           >
-            <img
-              src="/rose-harvest.png"
-              alt="バラ畑で花を摘む参加者のイメージ"
-              className="h-[520px] w-full object-cover"
-            />
+            <img src="/rose-harvest.png" alt="バラ畑で花を摘む参加者のイメージ" className="h-[520px] w-full object-cover" />
           </motion.div>
         </div>
       </section>
@@ -398,36 +343,12 @@ export default function Home() {
           body="この旅は、観光地を巡るツアーではありません。射水の土地にある素材を、五感で受け取り直すための体験です。"
         />
         <div className="mx-auto grid max-w-7xl gap-5 md:grid-cols-3">
-          <Pillar
-            icon={<Droplets className="h-6 w-6" />}
-            title="水"
-            text="射水の水、朝の一杯、炊きたての米、ローズティー。身体の内側から整える入口。"
-          />
-          <Pillar
-            icon={<Sprout className="h-6 w-6" />}
-            title="土"
-            text="田んぼの土に触れ、その土を器にする。食卓の根っこにあるものを思い出す時間。"
-          />
-          <Pillar
-            icon={<Utensils className="h-6 w-6" />}
-            title="米"
-            text="自然栽培米のおむすびを、土の器で味わう。最もシンプルで、最も深い食体験。"
-          />
-          <Pillar
-            icon={<Flame className="h-6 w-6" />}
-            title="火"
-            text="朝火のコーヒー、夜の星火BBQ。火を囲むことで、言葉と沈黙がほどけていく。"
-          />
-          <Pillar
-            icon={<Flower2 className="h-6 w-6" />}
-            title="香り"
-            text="朝露のバラ摘み、ローズドリンク、香りのクラフト。感性をひらく華やぎ。"
-          />
-          <Pillar
-            icon={<Mountain className="h-6 w-6" />}
-            title="命"
-            text="自然栽培野菜とジビエ。畑と里山の恵みを通して、いただきますの意味を味わう。"
-          />
+          <Pillar icon={<Droplets className="h-6 w-6" />} title="水" text="射水の水、朝の一杯、炊きたての米、ローズティー。身体の内側から整える入口。" />
+          <Pillar icon={<Sprout className="h-6 w-6" />} title="土" text="田んぼの土に触れ、その土を器にする。食卓の根っこにあるものを思い出す時間。" />
+          <Pillar icon={<Utensils className="h-6 w-6" />} title="米" text="自然栽培米のおむすびを、土の器で味わう。最もシンプルで、最も深い食体験。" />
+          <Pillar icon={<Flame className="h-6 w-6" />} title="火" text="朝火のコーヒー、夜の星火BBQ。火を囲むことで、言葉と沈黙がほどけていく。" />
+          <Pillar icon={<Flower2 className="h-6 w-6" />} title="香り" text="朝露のバラ摘み、ローズドリンク、香りのクラフト。感性をひらく華やぎ。" />
+          <Pillar icon={<Mountain className="h-6 w-6" />} title="命" text="自然栽培野菜とジビエ。畑と里山の恵みを通して、いただきますの意味を味わう。" />
         </div>
       </section>
 
@@ -448,9 +369,7 @@ export default function Home() {
               transition={{ duration: 0.55, delay: index * 0.04 }}
               className="border border-teal-900/10 bg-[#fbfdfb] p-7 shadow-[0_18px_55px_rgba(5,34,45,0.06)]"
             >
-              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-teal-900 text-emerald-100">
-                {item.icon}
-              </div>
+              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-teal-900 text-emerald-100">{item.icon}</div>
               <h3 className="mb-3 text-xl font-semibold text-slate-950">{item.title}</h3>
               <p className="leading-7 text-slate-700">{item.text}</p>
             </motion.div>
@@ -469,24 +388,16 @@ export default function Home() {
             className="overflow-hidden shadow-[0_28px_90px_rgba(5,34,45,0.16)]"
           >
             <img
-              src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80"
-              alt="焚火と料理のイメージ"
+              src="/rose-harvest.png"
+              alt="自然栽培の食と香りの体験イメージ"
               className="h-[520px] w-full object-cover"
             />
           </motion.div>
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6, delay: 0.1 }}>
             <p className="mb-3 text-sm font-semibold text-teal-700">FOOD EXPERIENCE</p>
-            <h2 className="text-3xl font-semibold leading-tight md:text-5xl">
-              山の命と畑の恵みを、火でいただく。
-            </h2>
+            <h2 className="text-3xl font-semibold leading-tight md:text-5xl">旅の時間に寄り添う、土地の食卓。</h2>
             <p className="mt-5 text-lg leading-9 text-slate-700">
-              旅の食事は、豪華さよりも「物語のある食卓」を大切に。自然栽培米、自然栽培野菜、バラ、へちま、ジビエを組み合わせ、射水の水と土から生まれる食体験として提供します。
+              旅の食体験は、一度きりの豪華な夕食ではなく、朝から夜までゆるやかにつながる流れとして設計されています。自然栽培米、畑の野菜、土の器、バラやへちまの香りが、身体と気分を少しずつ整えていきます。
             </p>
             <div className="mt-7 inline-flex items-center gap-2 border border-teal-900/15 bg-white px-4 py-2 text-sm font-semibold text-teal-800 shadow-sm">
               <Wine className="h-4 w-4" />
@@ -514,38 +425,22 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="overflow-hidden shadow-[0_28px_90px_rgba(0,0,0,0.28)]"
           >
-            <img
-              src="/satoyama-bbq.png"
-              alt="自然栽培野菜とジビエを囲む里山BBQのイメージ"
-              className="h-[540px] w-full object-cover"
-            />
+            <img src="/satoyama-bbq.png" alt="自然栽培野菜とジビエを囲む里山BBQのイメージ" className="h-[540px] w-full object-cover" />
           </motion.div>
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.08 }}
-          >
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6, delay: 0.08 }}>
             <p className="mb-3 text-sm font-semibold text-emerald-200">SATOYAMA BBQ</p>
-            <h2 className="text-3xl font-semibold leading-tight text-white md:text-5xl">
-              自然栽培の野菜と、里山のジビエを火でひらく。
-            </h2>
+            <h2 className="text-3xl font-semibold leading-tight text-white md:text-5xl">自然栽培の野菜と、里山のジビエを火でひらく。</h2>
             <p className="mt-5 text-lg leading-9 text-slate-200">
               畑で育ったみずみずしい野菜と、その土地の循環のなかにあるジビエを一つの火に集める、夜のハイライトです。焼き上がる香り、脂の音、野菜の甘みが重なり合って、食卓そのものが土地の物語になります。
             </p>
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
               <div className="border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
                 <p className="text-sm font-semibold text-emerald-200">畑の恵み</p>
-                <p className="mt-2 text-sm leading-7 text-slate-200">
-                  採れたての自然栽培野菜を、その場で焼いて味わうシンプルで贅沢な体験。
-                </p>
+                <p className="mt-2 text-sm leading-7 text-slate-200">採れたての自然栽培野菜を、その場で焼いて味わうシンプルで贅沢な体験。</p>
               </div>
               <div className="border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
                 <p className="text-sm font-semibold text-emerald-200">山の命</p>
-                <p className="mt-2 text-sm leading-7 text-slate-200">
-                  イノシシやシカなどのジビエを通して、いただくことの輪郭を静かに感じ直す時間。
-                </p>
+                <p className="mt-2 text-sm leading-7 text-slate-200">イノシシやシカなどのジビエを通して、いただくことの輪郭を静かに感じ直す時間。</p>
               </div>
             </div>
           </motion.div>
@@ -589,17 +484,9 @@ export default function Home() {
 
       <section className="px-6 py-20 md:px-10">
         <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-[0.9fr_1.1fr] md:items-center">
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-          >
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6 }}>
             <p className="mb-3 text-sm font-semibold text-teal-700">PLAN</p>
-            <h2 className="text-3xl font-semibold leading-tight md:text-5xl">
-              1日1組限定。深く味わうための農泊リトリート。
-            </h2>
+            <h2 className="text-3xl font-semibold leading-tight md:text-5xl">1日1組限定。深く味わうための農泊リトリート。</h2>
             <p className="mt-5 text-lg leading-9 text-slate-700">
               少人数だからこそ、農家、陶芸、地域の人、食卓との距離が近くなる。大量集客ではなく、ひと組に合わせて編集する高付加価値型の体験です。
             </p>
@@ -647,9 +534,7 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl gap-5 md:grid-cols-4">
           {locationItems.map((item) => (
             <div key={item.label} className="border border-teal-900/10 bg-[#fbfdfb] p-6 text-center shadow-sm">
-              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-slate-950 text-emerald-100">
-                {item.icon}
-              </div>
+              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-slate-950 text-emerald-100">{item.icon}</div>
               <p className="font-semibold leading-7">{item.label}</p>
             </div>
           ))}

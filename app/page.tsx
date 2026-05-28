@@ -377,6 +377,61 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="bg-[linear-gradient(180deg,#f4f8f4_0%,#edf5ef_100%)] px-6 py-20 md:px-10">
+        <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[1.05fr_0.95fr] md:items-center">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="overflow-hidden shadow-[0_28px_90px_rgba(5,34,45,0.14)]"
+          >
+            <img
+              src="/morning-fire-coffee.png"
+              alt="朝の焚火を囲みながらコーヒーを味わう時間のイメージ"
+              className="h-[560px] w-full object-cover"
+            />
+          </motion.div>
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.08 }}
+          >
+            <p className="mb-3 text-sm font-semibold text-teal-700">MORNING FIRE COFFEE</p>
+            <h2 className="text-3xl font-semibold leading-tight text-slate-950 md:text-5xl">
+              朝の火を囲み、
+              <br />
+              一杯のコーヒーで呼吸を整える。
+            </h2>
+            <p className="mt-5 text-lg leading-9 text-slate-700">
+              夜明けの冷たい空気の中で火を起こし、豆を挽き、湯を沸かす。手を動かしながら静けさに身を置くことで、
+              一日のはじまりがゆっくりと深くなる。農の現場にいるからこそ味わえる、贅沢で素朴な朝の時間です。
+            </p>
+            <div className="mt-7 inline-flex items-center gap-2 border border-teal-900/15 bg-white px-4 py-2 text-sm font-semibold text-teal-800 shadow-sm">
+              <Coffee className="h-4 w-4" />
+              焚火、ドリップ、会話、沈黙がひとつの体験になる朝
+            </div>
+            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+              <div className="border border-teal-900/10 bg-white p-5 shadow-sm">
+                <p className="text-sm font-semibold text-teal-700">火を囲む時間</p>
+                <p className="mt-2 text-sm leading-7 text-slate-700">
+                  まだ言葉が少ない朝に、火の音と香りを感じながら、参加者同士の距離がやわらかく近づいていきます。
+                </p>
+              </div>
+              <div className="border border-teal-900/10 bg-white p-5 shadow-sm">
+                <p className="text-sm font-semibold text-teal-700">一杯を淹れる所作</p>
+                <p className="mt-2 text-sm leading-7 text-slate-700">
+                  豆を挽き、お湯を注ぎ、器を手に取る。そのひとつひとつが、日常へ持ち帰れる整え方として残ります。
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       <section className="px-6 py-20 md:px-10">
         <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[0.95fr_1.05fr] md:items-center">
           <motion.div

@@ -504,6 +504,54 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="bg-[#07161b] px-6 py-20 text-white md:px-10">
+        <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[1.05fr_0.95fr] md:items-center">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="overflow-hidden shadow-[0_28px_90px_rgba(0,0,0,0.28)]"
+          >
+            <img
+              src="/satoyama-bbq.png"
+              alt="自然栽培野菜とジビエを囲む里山BBQのイメージ"
+              className="h-[540px] w-full object-cover"
+            />
+          </motion.div>
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.08 }}
+          >
+            <p className="mb-3 text-sm font-semibold text-emerald-200">SATOYAMA BBQ</p>
+            <h2 className="text-3xl font-semibold leading-tight text-white md:text-5xl">
+              自然栽培の野菜と、里山のジビエを火でひらく。
+            </h2>
+            <p className="mt-5 text-lg leading-9 text-slate-200">
+              畑で育ったみずみずしい野菜と、その土地の循環のなかにあるジビエを一つの火に集める、夜のハイライトです。焼き上がる香り、脂の音、野菜の甘みが重なり合って、食卓そのものが土地の物語になります。
+            </p>
+            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+              <div className="border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
+                <p className="text-sm font-semibold text-emerald-200">畑の恵み</p>
+                <p className="mt-2 text-sm leading-7 text-slate-200">
+                  採れたての自然栽培野菜を、その場で焼いて味わうシンプルで贅沢な体験。
+                </p>
+              </div>
+              <div className="border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
+                <p className="text-sm font-semibold text-emerald-200">山の命</p>
+                <p className="mt-2 text-sm leading-7 text-slate-200">
+                  イノシシやシカなどのジビエを通して、いただくことの輪郭を静かに感じ直す時間。
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       <section id="itinerary" className="bg-[#061a23] px-6 py-20 text-white md:px-10">
         <SectionTitle
           eyebrow="2 NIGHTS 3 DAYS"

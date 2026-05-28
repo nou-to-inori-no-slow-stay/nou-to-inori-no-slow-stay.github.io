@@ -415,42 +415,33 @@ export default function Home() {
 
       <section className="bg-white px-5 py-24 md:px-8 md:py-32" id="marche">
         <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-          <div className="scroll-reveal relative min-h-[34rem] overflow-hidden rounded-[1.5rem] border border-sagittarius-water/40 bg-sagittarius-mist shadow-soft">
-            <div className="absolute inset-0 ripple-field opacity-55" />
-            <div className="absolute inset-y-0 left-0 w-3/5 bg-sagittarius-navy" />
-            <div className="absolute inset-y-0 right-0 w-2/5 bg-gradient-to-b from-sagittarius-water via-white to-sagittarius-water/30" />
-            <div className="absolute left-8 top-10 max-w-[20rem]">
-              <p className="serif-heading text-3xl font-semibold leading-[1.5] text-white">
-                未来への一矢。
-                <br />
-                次世代への食育
-              </p>
-              <p className="mt-5 text-sm leading-8 text-white/78">
-                子どもたちが「甘い」と驚く本物の味。
-                自然の摂理と共に野菜をいただくことは、宇宙や自然とのつながりを学ぶ、静かで確かな教材になります。
-              </p>
-            </div>
-            <div className="absolute bottom-10 left-8 h-px w-56 bg-sagittarius-gold/60" />
-            <div className="absolute bottom-8 right-8 max-w-[14rem] rounded-[1.4rem] border border-white/60 bg-white/88 p-5 shadow-soft">
-              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sagittarius-gold">
-                波紋
-              </p>
-              <p className="mt-3 serif-heading text-2xl font-semibold leading-[1.5] text-sagittarius-navy">
-                波紋のように
-                <br />
-                広がる「整い」
-              </p>
-              <p className="mt-3 text-sm leading-7 text-sagittarius-ink/70">
-                あなた自身の健康から、家族の笑顔、社会全体の豊かさへ。
-              </p>
+          <div className="scroll-reveal overflow-hidden rounded-[1.5rem] border border-sagittarius-water/40 bg-white shadow-soft">
+            <div className="relative aspect-[4/5] w-full md:aspect-[5/4]">
+              <Image
+                alt="水のサジタリオのマルシェ出店ブースイメージ"
+                className="object-cover"
+                fill
+                sizes="(min-width: 1024px) 720px, 100vw"
+                src="/marche-booth.png"
+              />
             </div>
           </div>
           <div className="scroll-reveal">
             <SectionTitle
               eyebrow="マルシェ / 整う暮らし"
-              title="食卓からはじまる、スローの連鎖。"
-              lead="的に命中した矢が水面に波紋を広げるように、射水で生まれた野菜は、私を整え、家族を育み、その余韻を暮らし全体へと静かに広げていきます。"
+              title="マルシェで出会う、水のサジタリオ。"
+              lead="濃紺と白を基調にしたブースに、弓矢のエンブレム、波紋の意匠、透明袋に包まれた野菜たち。食卓へ届く前の一瞬から、水のサジタリオの世界観がまっすぐに伝わる場をつくります。"
             />
+            <div className="mt-8 space-y-5 text-sm leading-8 text-sagittarius-ink/76 md:text-base">
+              <p>
+                ブランドの佇まいがそのまま売場になるように、のぼり、タペストリー、テーブルクロス、商品シールまでを統一。
+                射水の水の清らかさと、星に導かれる静かな物語を、視覚からも感じられるブース設計です。
+              </p>
+              <p>
+                葉もの、かぶ、きのこ、にんじん、レタス、トマトなどの旬の野菜を、透明袋の中にそのまま見せることで、
+                素材の生命感と生産者ごとの個性がひと目で伝わります。手に取る前から、暮らしが少し整う気配を届けます。
+              </p>
+            </div>
           </div>
         </div>
       </section>

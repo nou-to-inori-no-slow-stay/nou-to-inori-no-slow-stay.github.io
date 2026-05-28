@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "水のサジタリオ | 射水のスローベジタブル、私を整え家族を育む食卓。",
+  title: "農と祈りのリトリート | 水のサジタリオ",
   description:
-    "射水の水と土の記憶、星の巡り、自然栽培の思想から生まれるスローベジタブルブランド。私を整え、家族を育む、引き算の食卓を届けます。",
+    "射水市水戸田・青井谷を舞台に、水・土・火・香りに還る2泊3日の農泊ウェルネスリトリート。",
   openGraph: {
-    title: "水のサジタリオ | 射水のスローベジタブル、私を整え家族を育む食卓。",
+    title: "農と祈りのリトリート | 水のサジタリオ",
     description:
-      "射水の水と土の記憶、星の巡り、自然栽培の思想から生まれるスローベジタブル。私を整え、家族を育む、引き算の食卓を伝えるブランドサイト。",
+      "自然栽培の食、田んぼの土の器、焚火、バラ、へちま、地元の人との語らいを味わう農泊ウェルネスツアー。",
     locale: "ja_JP",
     type: "website",
   },
@@ -21,11 +21,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <head>
-        <meta content="no-cache, no-store, must-revalidate" httpEquiv="Cache-Control" />
-        <meta content="no-cache" httpEquiv="Pragma" />
-        <meta content="0" httpEquiv="Expires" />
-      </head>
       <body>{children}</body>
     </html>
   );

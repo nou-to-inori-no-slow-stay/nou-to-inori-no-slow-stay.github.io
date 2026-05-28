@@ -1,523 +1,556 @@
-import { BrandGoods } from "@/components/BrandGoods";
-import { Logo } from "@/components/Logo";
-import { ProducerCard } from "@/components/ProducerCard";
-import { ProductCard } from "@/components/ProductCard";
-import { SectionTitle } from "@/components/SectionTitle";
-import Image from "next/image";
+"use client";
 
-const navItems = [
-  ["理念", "#concept"],
-  ["物語", "#story"],
-  ["商品", "#products"],
-  ["生産者", "#producers"],
-  ["マルシェ", "#marche"],
-  ["お問い合わせ", "#contact"],
+import { motion, type Variants } from "framer-motion";
+import {
+  ArrowRight,
+  CalendarDays,
+  CheckCircle2,
+  Coffee,
+  Droplets,
+  Flame,
+  Flower2,
+  Gift,
+  Heart,
+  Leaf,
+  MapPin,
+  Moon,
+  Mountain,
+  Sprout,
+  Stars,
+  Users,
+  Utensils,
+  Wine,
+} from "lucide-react";
+import type { ReactNode } from "react";
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const experiences = [
+  {
+    icon: <Sprout className="h-6 w-6" />,
+    title: "田んぼの土と、祈りの器づくり",
+    text: "marufarmの田んぼの土を一部練り込んだ粘土で、旅の記憶を宿す器をつくる陶芸体験。",
+  },
+  {
+    icon: <Utensils className="h-6 w-6" />,
+    title: "土の器で食べる自然栽培米のおむすび",
+    text: "同じ田んぼで育った自然栽培米を、土の記憶を宿した器で味わう象徴的な食体験。",
+  },
+  {
+    icon: <Coffee className="h-6 w-6" />,
+    title: "朝火のコーヒー時間",
+    text: "朝の焚火を囲み、豆を挽き、湯を沸かし、静けさの中で一日を始める時間。",
+  },
+  {
+    icon: <Flower2 className="h-6 w-6" />,
+    title: "朝露のバラ摘みと香りの祈り",
+    text: "朝露の残るバラを摘み、香りを深く吸い込みながら、心身をやさしく開いていく。",
+  },
+  {
+    icon: <Leaf className="h-6 w-6" />,
+    title: "へちまの浄化クラフト",
+    text: "へちまのたわしやリース、肌をほどくケア体験を通して、土に還る暮らしを感じる。",
+  },
+  {
+    icon: <Flame className="h-6 w-6" />,
+    title: "自然栽培野菜とジビエの星火BBQ",
+    text: "畑の恵みと山の命を、火を囲みながらいただく。地元の人と語り合う夜のクライマックス。",
+  },
 ];
 
-const coreValues = [
+const itinerary = [
   {
-    label: "水脈",
-    title: "射水。水を射るという名の地。",
-    text: "霊峰立山の雪解け水は地下を巡り、長い時間をかけて浄化され、この土地に湧き出します。水が矢のように駆け抜ける、その清流こそが野菜の起源です。",
+    day: "Day 1",
+    theme: "水と土に迎えられる日",
+    items: [
+      "チェックイン・水のサジタリオの物語",
+      "畑の入口の儀式・土に触れる時間",
+      "整う夕食｜自然栽培野菜のスープと小さなおむすび",
+      "焚火のローカルナイト｜地元の人と語る夜",
+    ],
   },
   {
-    label: "星読",
-    title: "星と土の対話。",
-    text: "古代、農は星や月のリズムと共にありました。自然のサイクルに耳を澄ませることで、作物は本来の生命力を宿し、野菜は軽やかな力を取り戻します。",
+    day: "Day 2",
+    theme: "香りを摘み、土を器にし、火で味わう日",
+    items: [
+      "朝露のバラ摘み",
+      "朝火のコーヒー時間",
+      "土の器で食べる自然栽培米のおむすび",
+      "匠の里で田んぼの土とバラの陶芸体験",
+      "自然栽培野菜の畑ピザ",
+      "へちまの浄化クラフト",
+      "自然栽培野菜とジビエの星火BBQ",
+      "星火の語らい｜農家・猟師・地域の人と語る",
+    ],
   },
   {
-    label: "養土",
-    title: "傷ついた大地を癒やす「手」。",
-    text: "自然栽培は、肥料や農薬に頼らず土本来の力を取り戻す引き算の農法。土を癒やすことが、食べる人の心身を整えることへとつながっていきます。",
+    day: "Day 3",
+    theme: "整った自分を日常へ持ち帰る日",
+    items: [
+      "朝散歩・水の一杯",
+      "引き算の朝ごはん",
+      "へちまで肌をほどく時間",
+      "種まき・苗植え・未来への一矢",
+      "水のサジタリオ・ファームバーガー",
+      "クロージング・お土産のお渡し",
+    ],
   },
 ];
 
-const products = [
+const foodMenu = [
+  "自然栽培米のおむすび",
+  "自然栽培野菜の畑ピザ",
+  "自然栽培野菜とジビエの星火BBQ",
+  "イノシシ・シカなどのジビエ料理",
+  "水のサジタリオ・ファームバーガー",
+  "バラソーダ・ローズティー",
+  "へちま茶・季節のハーブドリンク",
+];
+
+const included = [
+  "2泊3日のリトリート体験",
+  "期間中の食事・ドリンク",
+  "陶芸・バラ・へちま関連体験",
+  "農業体験・焚火体験",
+  "地元の人との交流時間",
+  "水のサジタリオ野菜BOX",
+  "参加者が制作した器の後日発送",
+  "リトリートノート",
+];
+
+const heroStats = [
   {
-    title: "季節の野菜",
-    description: "子どもが『甘い』と驚く本物の味。射水の清流と土が育てる、旬の生命力をそのまま届けます。",
-    tags: ["自然栽培", "射水産", "季節限定"],
-    tone: "water" as const,
+    icon: <CalendarDays className="h-5 w-5" />,
+    label: "期間",
+    value: "2泊3日",
   },
   {
-    title: "椎茸",
-    description: "湿度と空気の密度まで整えながら育てる、深い香りと澄んだ余韻の山の恵みです。",
-    tags: ["生産者の顔が見える", "射水産"],
-    tone: "leaf" as const,
+    icon: <Users className="h-5 w-5" />,
+    label: "定員",
+    value: "1日1組限定",
   },
   {
-    title: "はちみつ",
-    description: "ケイローンからアリスタイオスへと受け継がれた知恵を思わせる、静かな甘みの贈りもの。",
-    tags: ["季節限定", "ギフト対応"],
-    tone: "gold" as const,
-  },
-  {
-    title: "加工品",
-    description: "素材の純度を損なわず、毎日の暮らしに取り込みやすいかたちへ整えた小さな逸品です。",
-    tags: ["少量生産", "ライフスタイル"],
-    tone: "mist" as const,
-  },
-  {
-    title: "ギフトセット",
-    description: "古の祈りと現代のウェルネスをひと箱に。家族の健康を願う一矢として贈れます。",
-    tags: ["射水産", "ギフト対応", "季節限定"],
-    tone: "navy" as const,
+    icon: <Gift className="h-5 w-5" />,
+    label: "料金",
+    value: "1組10万円〜",
   },
 ];
+
+type SectionTitleProps = {
+  eyebrow: string;
+  title: string;
+  body?: string;
+  light?: boolean;
+};
+
+function SectionTitle({ eyebrow, title, body, light = false }: SectionTitleProps) {
+  return (
+    <motion.div
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.6 }}
+      className="mx-auto mb-12 max-w-3xl text-center"
+    >
+      <p className={`mb-3 text-sm font-semibold tracking-[0.28em] ${light ? "text-amber-300" : "text-amber-700"}`}>
+        {eyebrow}
+      </p>
+      <h2 className={`text-3xl font-semibold leading-tight md:text-5xl ${light ? "text-white" : "text-slate-950"}`}>
+        {title}
+      </h2>
+      {body ? (
+        <p className={`mt-5 text-base leading-8 md:text-lg ${light ? "text-slate-200" : "text-slate-700"}`}>
+          {body}
+        </p>
+      ) : null}
+    </motion.div>
+  );
+}
+
+type PillarProps = {
+  icon: ReactNode;
+  title: string;
+  text: string;
+};
+
+function Pillar({ icon, title, text }: PillarProps) {
+  return (
+    <motion.div
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.55 }}
+      className="rounded-3xl border border-white/70 bg-white/70 p-6 shadow-sm backdrop-blur"
+    >
+      <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-950 text-white">
+        {icon}
+      </div>
+      <h3 className="mb-3 text-xl font-semibold text-slate-950">{title}</h3>
+      <p className="leading-7 text-slate-700">{text}</p>
+    </motion.div>
+  );
+}
 
 export default function Home() {
   return (
-    <main className="overflow-hidden bg-sagittarius-porcelain">
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/12 bg-sagittarius-navy/88 backdrop-blur-xl">
-        <div className="mx-auto flex h-[var(--header-height)] max-w-7xl items-center justify-between px-5 md:px-8">
-          <a aria-label="水のサジタリオ トップへ" className="relative translate-y-1.5" href="#top">
-            <Logo compact inverted />
-          </a>
-          <nav aria-label="主要ナビゲーション" className="hidden items-center gap-7 lg:flex">
-            {navItems.map(([label, href]) => (
-              <a
-                className="text-xs font-semibold uppercase tracking-[0.22em] text-white transition hover:text-sagittarius-water"
-                href={href}
-                key={label}
-              >
-                {label}
-              </a>
-            ))}
-          </nav>
-          <a
-            className="hidden rounded-full border border-sagittarius-gold/70 px-5 py-2 text-xs font-semibold tracking-[0.22em] text-white transition hover:bg-sagittarius-gold hover:text-sagittarius-navy md:inline-flex"
-            href="#contact"
-          >
-            お問い合わせ
-          </a>
-        </div>
-      </header>
-
-      <section
-        className="relative flex min-h-[92svh] items-center overflow-hidden bg-hero-radial px-5 pb-16 pt-28 text-white md:px-8 md:pb-20 md:pt-36"
-        id="top"
-      >
-        <div className="absolute inset-0 overflow-hidden">
-          <video
-            aria-label="水のサジタリオ ブランドムービー"
-            autoPlay
-            className="h-full w-full object-cover object-center opacity-35 md:opacity-50"
-            loop
-            muted
-            playsInline
-            preload="metadata"
-          >
-            <source src="/hero-top.mp4" type="video/mp4" />
-          </video>
-        </div>
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,42,74,0.82)_0%,rgba(8,42,74,0.64)_38%,rgba(8,42,74,0.42)_68%,rgba(8,42,74,0.56)_100%)]" />
-        <div className="absolute inset-0 star-field opacity-80" />
-        <div className="absolute inset-0 ripple-field opacity-25" />
-        <div className="absolute left-[7%] top-[24%] h-72 w-72 rounded-full border border-sagittarius-water/25" />
-        <div className="absolute right-[-7rem] top-24 h-[34rem] w-[34rem] rounded-full border border-sagittarius-gold/25" />
-        <div className="absolute bottom-24 right-[18%] h-px w-56 rotate-[-30deg] bg-sagittarius-gold/50" />
-        <div className="absolute bottom-10 right-4 opacity-25 md:hidden">
-          <Logo className="scale-[1.2]" inverted markOnly />
-        </div>
-        <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-14 lg:grid-cols-[1fr_1fr]">
-          <div className="reveal max-w-4xl">
-            <p className="mb-6 inline-flex items-center gap-4 text-xs font-semibold uppercase tracking-[0.34em] text-sagittarius-water">
-              射水のスローベジタブル
-              <span className="h-px w-16 bg-sagittarius-gold" />
-            </p>
-            <h1 className="serif-heading text-5xl font-semibold leading-[1.15] md:text-7xl lg:text-8xl">
-              水の
+    <main className="min-h-screen overflow-hidden bg-[#f7f1e7] text-slate-950">
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(180,119,62,0.20),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(21,38,62,0.22),transparent_38%)]" />
+        <div className="absolute left-1/2 top-20 h-[520px] w-[520px] -translate-x-1/2 rounded-full border border-white/50 opacity-50" />
+        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 md:grid-cols-[1.05fr_0.95fr] md:px-10 md:py-28">
+          <motion.div variants={fadeUp} initial="hidden" animate="visible" transition={{ duration: 0.7 }}>
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-amber-800/20 bg-white/70 px-4 py-2 text-sm font-medium text-amber-800 shadow-sm backdrop-blur">
+              <Stars className="h-4 w-4" />
+              水のサジタリオ presents
+            </div>
+            <h1 className="text-5xl font-semibold leading-[1.08] tracking-tight text-slate-950 md:text-7xl">
+              農と祈りの
               <br />
-              サジタリオ
+              リトリート
             </h1>
-            <p className="serif-heading mt-8 max-w-2xl text-2xl leading-[1.7] text-white/88 md:text-4xl">
-              私を整え、家族を育む、
-              <br className="hidden md:block" />
-              引き算の食卓。
+            <p className="mt-6 max-w-2xl text-xl leading-9 text-slate-700">
+              水・土・火・香りに還る、2泊3日。射水市水戸田・青井谷を舞台に、自然栽培の食、田んぼの土の器、焚火、バラ、へちま、地元の人との語らいを味わう農泊ウェルネスツアー。
             </p>
-            <p className="mt-6 max-w-2xl text-base leading-8 text-white/72 md:text-lg">
-              肥料も、農薬も、私たちの都合も、なにも足さない。
-              ただ、射水の水と土の記憶、そして星の巡りに耳を澄ませ、
-              効率やスピードから離れた「最高のスロー」を食卓へ届けます。
-            </p>
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <a
-                className="inline-flex items-center justify-center rounded-full bg-white px-7 py-4 text-sm font-semibold tracking-[0.16em] text-sagittarius-navy shadow-soft transition hover:-translate-y-0.5 hover:bg-sagittarius-water"
-                href="#concept"
+                href="#reserve"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-slate-950 px-7 py-4 text-base font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-slate-800"
               >
-                ブランドストーリーを見る
+                モニター相談をする
+                <ArrowRight className="h-5 w-5" />
               </a>
               <a
-                className="inline-flex items-center justify-center rounded-full border border-sagittarius-gold/80 px-7 py-4 text-sm font-semibold tracking-[0.16em] text-white transition hover:-translate-y-0.5 hover:bg-sagittarius-gold hover:text-sagittarius-navy"
-                href="#products"
+                href="#itinerary"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-950/15 bg-white/70 px-7 py-4 text-base font-semibold text-slate-950 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:bg-white"
               >
-                商品について知る
+                旅程を見る
               </a>
             </div>
-          </div>
+            <div className="mt-10 grid max-w-2xl gap-3 text-center sm:grid-cols-3">
+              {heroStats.map((stat) => (
+                <div key={stat.label} className="rounded-2xl bg-white/60 p-4 shadow-sm backdrop-blur">
+                  <div className="mx-auto mb-2 flex h-9 w-9 items-center justify-center rounded-full bg-amber-100 text-amber-800">
+                    {stat.icon}
+                  </div>
+                  <p className="text-sm text-slate-500">{stat.label}</p>
+                  <p className="mt-1 font-semibold">{stat.value}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
 
-          <div className="reveal reveal-delay-2 relative mx-auto hidden w-full max-w-[33rem] justify-center md:flex lg:justify-end">
-            <div className="relative w-full overflow-hidden rounded-[2rem] border border-white/14 bg-white/8 p-8 shadow-soft backdrop-blur">
-              <div className="absolute inset-6 rounded-[1.5rem] border border-sagittarius-water/24" />
-              <div className="absolute -right-10 top-10 h-32 w-32 rounded-full border border-sagittarius-gold/25" />
-              <div className="absolute bottom-8 left-8 h-px w-28 bg-sagittarius-gold/60" />
-              <div className="relative z-10 flex min-h-[30rem] items-center justify-center">
-                <Logo className="scale-[1.7]" />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="relative"
+          >
+            <div className="rounded-[2rem] border border-white/70 bg-white/45 p-4 shadow-2xl backdrop-blur">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-slate-900">
+                <img
+                  src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80"
+                  alt="里山の夕暮れと農泊リトリートのイメージ"
+                  className="h-full w-full object-cover opacity-90"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/10 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-7 text-white">
+                  <p className="mb-2 text-sm tracking-[0.22em] text-amber-200">RETREAT IN IMIZU</p>
+                  <p className="text-2xl font-semibold leading-snug">土の器、朝摘みのバラ、星火の語らい。</p>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white px-5 py-24 md:px-8 md:py-32" id="concept">
-        <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-          <div className="scroll-reveal">
-            <SectionTitle
-              eyebrow="はじまり"
-              title="射水のスローベジタブル。私を整え、家族を育む、引き算の食卓。"
-              lead="自然の大きなリズムに身を委ねて育つ野菜には、女性の繊細なリズムに寄り添い、子どもたちの五感を呼び覚ます、混じり気のない強さが宿ります。"
-            />
-          </div>
-          <div className="scroll-reveal rounded-[1.5rem] border border-sagittarius-water/35 bg-water-sheen p-8 shadow-soft md:p-12">
-            <p className="text-lg leading-9 text-sagittarius-ink/82">
-              「水のサジタリオ」が届けたいのは、ただ新鮮な野菜ではありません。
-              肥料も、農薬も、私たちのエゴも、なにも足さず、
-              射水の水と土の記憶、そして星の巡りに身を委ねて育てる、
-              引き算の農から生まれる静かな豊かさです。
-            </p>
-            <p className="mt-6 serif-heading text-2xl leading-[1.7] text-sagittarius-navy">
-              効率やスピードから離れた、
-              最高の「スロー」をあなたの食卓へ。
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="water-texture bg-sagittarius-mist px-5 py-24 md:px-8 md:py-32">
-        <div className="mx-auto max-w-7xl">
-          <SectionTitle
-            align="center"
-            eyebrow="三つの核心"
-            title="整えること、育むこと、ゆだねること。"
-            lead="射水の風土、天体と農の記憶、そして土を癒やす手。スローベジタブルという思想を、暮らしに届く三つの核心としてまとめました。"
-          />
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {coreValues.map((value, index) => (
-              <article
-                className="scroll-reveal rounded-[1.35rem] border border-white bg-white/88 p-8 shadow-soft"
-                key={value.label}
-              >
-                <div className="mb-8 flex items-center justify-between">
-                  <p className="text-xs font-semibold uppercase tracking-[0.32em] text-sagittarius-gold">
-                    {value.label}
-                  </p>
-                  <span className="grid h-12 w-12 place-items-center rounded-full border border-sagittarius-water text-sm font-semibold text-sagittarius-navy">
-                    0{index + 1}
-                  </span>
+            <div className="absolute -bottom-6 -left-6 hidden rounded-3xl bg-white p-5 shadow-xl md:block">
+              <div className="flex items-center gap-3">
+                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-amber-100 text-amber-800">
+                  <Flame className="h-5 w-5" />
                 </div>
-                <h3 className="serif-heading text-3xl font-semibold leading-[1.5] text-sagittarius-navy">
-                  {value.title}
-                </h3>
-                <p className="mt-5 text-sm leading-8 text-sagittarius-ink/72">{value.text}</p>
-              </article>
-            ))}
-          </div>
+                <div>
+                  <p className="text-sm text-slate-500">Signature</p>
+                  <p className="font-semibold">星火BBQ</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      <section className="bg-white px-5 py-24 md:px-8 md:py-32" id="story">
-        <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[1fr_0.95fr] lg:items-start">
-          <div className="scroll-reveal">
-            <SectionTitle
-              eyebrow="物語"
-              title="「射水」を翻訳する、イタリアの響き。"
-              lead="サジタリオは、イタリア語で射手座を意味します。矢を放つ星座の名に、射水の清らかな水を重ね、野菜という一矢に乗せて食卓へ射抜く。そこに、イタリアのスローフード哲学と、射水ならではのスローベジタブルの思想を重ねました。"
-            />
-            <div className="mt-8 space-y-6 text-sm leading-8 text-sagittarius-ink/76 md:text-base">
+      <section className="px-6 py-20 md:px-10">
+        <div className="mx-auto max-w-6xl rounded-[2rem] bg-slate-950 p-8 text-white shadow-xl md:p-14">
+          <div className="grid gap-10 md:grid-cols-[0.8fr_1.2fr] md:items-center">
+            <div>
+              <p className="mb-4 text-sm font-semibold tracking-[0.28em] text-amber-300">CONCEPT</p>
+              <h2 className="text-3xl font-semibold leading-tight md:text-5xl">
+                土を器に。米を祈りに。火を語らいに。
+              </h2>
+            </div>
+            <div className="text-lg leading-9 text-slate-200">
               <p>
-                イタリア発祥の「スローフード」は、その土地の風土と食文化を守り、
-                効率やスピードでは測れない食の豊かさを取り戻す思想です。
+                marufarmの田んぼの土を使って器をつくり、同じ田んぼで育った自然栽培米をおむすびにして味わう。朝は焚火でコーヒーを淹れ、夜は火を囲んで地元の人と語り合う。
               </p>
-              <p>
-                日本のベニスと呼ばれる内川の水辺文化、立山の雪解け水、そして射水の農の記憶。
-                その土地ならではの時間の流れを受け取り、日々の食卓へ訳し直すこと。
-                それが「射水のスローベジタブル」という私たちの答えです。
+              <p className="mt-5">
+                農作業を体験するだけではなく、食べること、つくること、祈ることをもう一度丁寧に取り戻す。水のサジタリオが届ける、射水の水と土に還るための2泊3日です。
               </p>
             </div>
-          </div>
-          <div className="scroll-reveal grid gap-6">
-            <article className="overflow-hidden rounded-[1.5rem] border border-sagittarius-water/35 bg-sagittarius-navy p-8 text-white shadow-soft">
-              <p className="text-xs font-semibold uppercase tracking-[0.32em] text-sagittarius-water">
-                土地の記憶
-              </p>
-              <h3 className="serif-heading mt-4 text-3xl font-semibold leading-[1.45]">
-                日本のベニス、射水。
-                <br />
-                水と生きる場所。
-              </h3>
-              <p className="mt-5 text-sm leading-8 text-white/76">
-                ベネチアを思わせる内川の景観と、立山連峰の雪解け水が代流となって潜り抜けてきた豊かな水。
-                私たちの野菜は、この「水」と共に育ちます。
-              </p>
-            </article>
-            <article className="overflow-hidden rounded-[1.5rem] border border-sagittarius-water/35 bg-white p-8 shadow-soft">
-              <p className="text-xs font-semibold uppercase tracking-[0.32em] text-sagittarius-gold">
-                象徴
-              </p>
-              <h3 className="serif-heading mt-4 text-3xl font-semibold leading-[1.45] text-sagittarius-navy">
-                地理的な「真ん中」を超えた、
-                命の的。
-              </h3>
-              <p className="mt-5 text-sm leading-8 text-sagittarius-ink/72">
-                海、川、里山が凝縮された富山県の中心、射水。
-                ここは単なる中間地点ではなく、豊かな自然のエネルギーが収束する「的」の真ん中です。
-              </p>
-            </article>
           </div>
         </div>
       </section>
 
-      <section className="relative bg-sagittarius-navy px-5 py-24 text-white md:px-8 md:py-32">
-        <div className="absolute inset-0 star-field opacity-45" />
-        <div className="absolute inset-0 ripple-field opacity-10" />
-        <div className="relative z-10 mx-auto max-w-7xl">
-          <SectionTitle
-            align="center"
-            eyebrow="神話と伝承"
-            light
-            title="古の祈りと、射手座の知恵を現代の農へ。"
-            lead="1000年続く流鏑馬神事の一矢、古代農耕と天体の関係、そしてケイローンの象徴性。水のサジタリオは、神話と土地の記憶を現代の食卓へ翻訳します。"
+      <section className="px-6 py-20 md:px-10">
+        <SectionTitle
+          eyebrow="SEVEN ELEMENTS"
+          title="水・土・米・火・香り・命・浄化"
+          body="この旅は、観光地を巡るツアーではありません。射水の土地にある素材を、五感で受け取り直すための体験です。"
+        />
+        <div className="mx-auto grid max-w-7xl gap-5 md:grid-cols-3">
+          <Pillar
+            icon={<Droplets className="h-6 w-6" />}
+            title="水"
+            text="射水の水、朝の一杯、炊きたての米、ローズティー。身体の内側から整える入口。"
           />
-          <div className="mt-14 grid gap-6 lg:grid-cols-2">
-            <article className="scroll-reveal rounded-[1.35rem] border border-white/14 bg-white/8 p-7 backdrop-blur">
-              <h3 className="serif-heading text-2xl font-semibold text-white">
-                古の祈り。五穀豊穣を願う「一矢」
-              </h3>
-              <p className="mt-4 text-sm leading-8 text-white/78">
-                射水市・下村加茂神社に1000年続く神事「やんさんま」。
-                疾走する馬上から放たれる矢は、武芸ではなく五穀豊穣への祈りでした。
-                豊かな実りを願い、天と地を繋ぐその一矢は、この土地の記憶そのものです。
-              </p>
-            </article>
-            <article className="scroll-reveal rounded-[1.35rem] border border-white/14 bg-white/8 p-7 backdrop-blur">
-              <h3 className="serif-heading text-2xl font-semibold text-white">
-                星と土の対話。古の知恵
-              </h3>
-              <p className="mt-4 text-sm leading-8 text-white/78">
-                古代、農業は星や月のリズムと共にありました。
-                種まきや収穫の時期を天体から学び、自然のサイクルに従うことで、作物は本来の生命力を宿します。
-              </p>
-            </article>
-            <article className="scroll-reveal rounded-[1.35rem] border border-white/14 bg-white/8 p-7 backdrop-blur">
-              <h3 className="serif-heading text-2xl font-semibold text-white">
-                半人半馬の賢者・ケイローン
-              </h3>
-              <p className="mt-4 text-sm leading-8 text-white/78">
-                射手座のモデルであるケイローンは、荒ぶる自然と高度な知性の融合体。
-                自然の力を尊重し、人の知恵をそっと添える農業の本質そのものを表しています。
-              </p>
-            </article>
-            <article className="scroll-reveal rounded-[1.35rem] border border-white/14 bg-white/8 p-7 backdrop-blur">
-              <h3 className="serif-heading text-2xl font-semibold text-white">
-                土を癒やし、心身を整える
-              </h3>
-              <p className="mt-4 text-sm leading-8 text-white/78">
-                ケイローンは「傷ついた癒やし手」と呼ばれました。
-                傷ついた大地を癒やすように、自然栽培は土本来の力を取り戻し、そこから生まれる野菜を通して食べる人の心身へ静かな整いを広げます。
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-sagittarius-porcelain px-5 py-24 md:px-8 md:py-32" id="products">
-        <div className="mx-auto max-w-7xl">
-          <SectionTitle
-            align="center"
-            eyebrow="商品"
-            title="射水から届く、まっすぐな一矢。"
-            lead="今後の展開を見据えながら、野菜、椎茸、はちみつ、加工品、ギフトセットへ。土地の清流と強いこだわりを、暮らしのかたちに変えて届けます。"
+          <Pillar
+            icon={<Sprout className="h-6 w-6" />}
+            title="土"
+            text="田んぼの土に触れ、その土を器にする。食卓の根っこにあるものを思い出す時間。"
           />
-          <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-5">
-            {products.map((product) => (
-              <ProductCard key={product.title} {...product} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="relative bg-sagittarius-deep px-5 py-24 text-white md:px-8 md:py-32" id="producers">
-        <div className="absolute inset-0 water-texture opacity-20" />
-        <div className="relative z-10 mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-          <div className="scroll-reveal">
-            <SectionTitle
-              eyebrow="生産者"
-              light
-              title="射手は、強いこだわりを持つ農家たち。"
-              lead="妥協なき栽培技術。土への執着。私たちの農業は静かな闘いです。その強いこだわりこそが、弓を引き絞る力になります。子どもや家族の暮らしに寄り添う視点もまた、水のサジタリオを支える大切な力です。"
-            />
-          </div>
-          <div className="grid gap-6">
-            <ProducerCard
-              name="marufarm"
-              subtitle="代表：丸山友徳。看護師の視点から、食と農で健康と幸せをアシストする生産者"
-              description="富山県射水市で、農薬・肥料・除草剤を使わない自然栽培を実践し、固定種・在来種の野菜、原木椎茸、養蜂まで手がける生産者。『安心』と『食育の機会』を届けたいという思いのもと、看護師としての経験を重ねながら、身体にやさしく、環境にも寄り添う農を育てています。"
-            />
-            <ProducerCard
-              name="射水市自然農園"
-              subtitle="代表：石垣孝太。子どもと家族の食卓に寄り添う、有機農業の実践者"
-              description="2025年4月に射水市内小学校教員から有機農業の世界へ。自然の中で育った野菜を、射水の大地で育つ子どもたちへ届けたいという思いを軸に、子育て中のお父さん・お母さんに伴走する事業づくりにも取り組んでいます。『土とあそんで、おいしく食べる。』という感覚を、日々の暮らしへひらく生産者です。"
-            />
-            <ProducerCard
-              name="はなわっか畑"
-              subtitle="代表：花島陽子。無肥料・無農薬の自然栽培と、食の手しごとをつなぐ生産者"
-              description="富山で無肥料・無農薬の自然栽培に取り組みながら、味噌づくりのような手しごとの食体験にも寄り添う生産者。土にふれ、仕込んで、味わうところまでをひとつの循環として大切にし、家族の食卓にやさしい記憶を重ねていくような農のあり方を育んでいます。"
-            />
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white px-5 py-24 md:px-8 md:py-32">
-        <div className="mx-auto max-w-7xl">
-          <SectionTitle
-            align="center"
-            eyebrow="生産者のしるし"
-            title="透明袋の中に、それぞれの畑の個性を。"
-            lead="かぶや葉もの、きのこ、にんじん、トマト。透明袋の中に野菜そのものの表情を見せながら、marufarm、はなわっか畑、射水自然農園のしるしと、水のサジタリオのブランドシールが並ぶことで、個性と統一感がひとつの売場に結ばれます。"
+          <Pillar
+            icon={<Utensils className="h-6 w-6" />}
+            title="米"
+            text="自然栽培米のおむすびを、土の器で味わう。最もシンプルで、最も深い食体験。"
           />
-          <div className="mt-14 overflow-hidden rounded-[1.6rem] border border-white/70 bg-white/85 shadow-soft">
-            <div className="relative aspect-[16/10] w-full md:aspect-[16/8.4]">
-              <Image
-                alt="透明袋に入った野菜に、marufarm、はなわっか畑、射水自然農園と水のサジタリオのシールが貼られた商品イメージ"
-                className="object-cover"
-                fill
-                sizes="(min-width: 1024px) 1120px, 100vw"
-                src="/producer-stickers-scene.png"
-              />
-            </div>
-          </div>
-          <div className="mt-6 grid gap-3 text-sm text-sagittarius-ink/72 md:grid-cols-4">
-            <div className="rounded-[1.1rem] border border-sagittarius-water/35 bg-sagittarius-mist/60 px-4 py-3">
-              葉もの・かぶ
-            </div>
-            <div className="rounded-[1.1rem] border border-sagittarius-water/35 bg-sagittarius-mist/60 px-4 py-3">
-              きのこ
-            </div>
-            <div className="rounded-[1.1rem] border border-sagittarius-water/35 bg-sagittarius-mist/60 px-4 py-3">
-              にんじん
-            </div>
-            <div className="rounded-[1.1rem] border border-sagittarius-water/35 bg-sagittarius-mist/60 px-4 py-3">
-              レタス・トマト
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white px-5 py-24 md:px-8 md:py-32" id="marche">
-        <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-          <div className="scroll-reveal overflow-hidden rounded-[1.5rem] border border-sagittarius-water/40 bg-white shadow-soft">
-            <div className="relative aspect-[4/5] w-full md:aspect-[5/4]">
-              <Image
-                alt="水のサジタリオのマルシェ出店ブースイメージ"
-                className="object-cover"
-                fill
-                sizes="(min-width: 1024px) 720px, 100vw"
-                src="/marche-booth.png"
-              />
-            </div>
-          </div>
-          <div className="scroll-reveal">
-            <SectionTitle
-              eyebrow="マルシェ / 整う暮らし"
-              title="マルシェで出会う、水のサジタリオ。"
-              lead="濃紺と白を基調にしたブースに、弓矢のエンブレム、波紋の意匠、透明袋に包まれた野菜たち。食卓へ届く前の一瞬から、水のサジタリオの世界観がまっすぐに伝わる場をつくります。"
-            />
-            <div className="mt-8 space-y-5 text-sm leading-8 text-sagittarius-ink/76 md:text-base">
-              <p>
-                ブランドの佇まいがそのまま売場になるように、のぼり、タペストリー、テーブルクロス、商品シールまでを統一。
-                射水の水の清らかさと、星に導かれる静かな物語を、視覚からも感じられるブース設計です。
-              </p>
-              <p>
-                葉もの、かぶ、きのこ、にんじん、レタス、トマトなどの旬の野菜を、透明袋の中にそのまま見せることで、
-                素材の生命感と生産者ごとの個性がひと目で伝わります。手に取る前から、暮らしが少し整う気配を届けます。
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="water-texture bg-sagittarius-mist px-5 py-24 md:px-8 md:py-32">
-        <div className="mx-auto max-w-7xl">
-          <SectionTitle
-            align="center"
-            eyebrow="ブランドグッズ"
-            title="暮らしに寄り添う、世界観のかけら。"
-            lead="ロゴや弓矢、水紋の余韻をまとったTシャツ、トート、包装資材まで。ブランドが日常に静かに溶け込む展開を見せます。"
+          <Pillar
+            icon={<Flame className="h-6 w-6" />}
+            title="火"
+            text="朝火のコーヒー、夜の星火BBQ。火を囲むことで、言葉と沈黙がほどけていく。"
           />
-          <div className="mt-14 overflow-hidden rounded-[1.6rem] border border-white/70 bg-white/80 shadow-soft">
-            <div className="relative aspect-[16/10] w-full md:aspect-[16/8.5]">
-              <Image
-                alt="水のサジタリオのブランドグッズ一覧"
-                className="object-cover"
-                fill
-                priority={false}
-                sizes="(min-width: 1024px) 1120px, 100vw"
-                src="/brand-goods-collection.png"
-              />
-            </div>
-          </div>
-          <div className="mt-8">
-            <BrandGoods />
-          </div>
+          <Pillar
+            icon={<Flower2 className="h-6 w-6" />}
+            title="香り"
+            text="朝露のバラ摘み、ローズドリンク、香りのクラフト。感性をひらく華やぎ。"
+          />
+          <Pillar
+            icon={<Mountain className="h-6 w-6" />}
+            title="命"
+            text="自然栽培野菜とジビエ。畑と里山の恵みを通して、いただきますの意味を味わう。"
+          />
         </div>
       </section>
 
-      <section className="relative bg-hero-radial px-5 py-24 text-white md:px-8 md:py-32" id="contact">
-        <div className="absolute inset-0 star-field opacity-60" />
-        <div className="absolute left-1/2 top-0 h-px w-[80%] -translate-x-1/2 bg-sagittarius-gold/45" />
-        <div className="relative z-10 mx-auto max-w-4xl text-center">
-          <Logo className="justify-center" />
-          <h2 className="serif-heading mt-10 text-4xl font-semibold leading-[1.35] md:text-6xl">
-            私たちが届けるのは、
-            <br />
-            「まっすぐな未来」。
-          </h2>
-          <p className="mx-auto mt-8 max-w-3xl text-base leading-8 text-white/80 md:text-lg">
-            古の星が導き、射水の水が潤し、大地の力が育む。
-            「水のサジタリオ」は、私を整え、家族を育む、引き算の食卓を届ける現代の射手です。
-            なにも足さない純粋な一矢を、あなたの家族へまっすぐ届けます。
-          </p>
-          <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
-            <a
-              className="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-sm font-semibold tracking-[0.18em] text-sagittarius-navy transition hover:-translate-y-0.5 hover:bg-sagittarius-water"
-              href="mailto:info@example.com"
+      <section className="bg-white/55 px-6 py-20 md:px-10">
+        <SectionTitle
+          eyebrow="EXPERIENCE"
+          title="この旅でしか味わえない体験"
+          body="体験の一つひとつが、食卓・暮らし・地域の人へとつながっていきます。"
+        />
+        <div className="mx-auto grid max-w-7xl gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {experiences.map((item, index) => (
+            <motion.div
+              key={item.title}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.55, delay: index * 0.04 }}
+              className="rounded-3xl border border-slate-950/10 bg-white p-7 shadow-sm"
             >
-              お問い合わせ
+              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#f2e4cf] text-amber-800">
+                {item.icon}
+              </div>
+              <h3 className="mb-3 text-xl font-semibold text-slate-950">{item.title}</h3>
+              <p className="leading-7 text-slate-700">{item.text}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      <section className="px-6 py-20 md:px-10">
+        <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[0.95fr_1.05fr] md:items-center">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="overflow-hidden rounded-[2rem] shadow-xl"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80"
+              alt="焚火と料理のイメージ"
+              className="h-[540px] w-full object-cover"
+            />
+          </motion.div>
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <p className="mb-3 text-sm font-semibold tracking-[0.28em] text-amber-700">FOOD EXPERIENCE</p>
+            <h2 className="text-3xl font-semibold leading-tight md:text-5xl">
+              山の命と畑の恵みを、火でいただく。
+            </h2>
+            <p className="mt-5 text-lg leading-9 text-slate-700">
+              旅の食事は、豪華さよりも「物語のある食卓」を大切に。自然栽培米、自然栽培野菜、バラ、へちま、ジビエを組み合わせ、射水の水と土から生まれる食体験として提供します。
+            </p>
+            <div className="mt-7 inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-2 text-sm font-semibold text-amber-800 shadow-sm">
+              <Wine className="h-4 w-4" />
+              季節の香りを閉じ込めたドリンクもご用意します
+            </div>
+            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+              {foodMenu.map((item) => (
+                <div key={item} className="flex items-start gap-3 rounded-2xl bg-white/70 p-4 shadow-sm">
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-amber-700" />
+                  <p className="font-medium text-slate-800">{item}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section id="itinerary" className="bg-slate-950 px-6 py-20 text-white md:px-10">
+        <SectionTitle
+          eyebrow="2 NIGHTS 3 DAYS"
+          title="旅の流れ"
+          body="水と土に迎えられ、香りを摘み、火を囲み、整った自分を日常へ持ち帰る2泊3日。"
+          light
+        />
+        <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-3">
+          {itinerary.map((day, index) => (
+            <motion.div
+              key={day.day}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.55, delay: index * 0.08 }}
+              className="rounded-3xl border border-white/10 bg-white/[0.06] p-7 shadow-sm backdrop-blur"
+            >
+              <div className="mb-5 inline-flex rounded-full bg-amber-300 px-4 py-2 text-sm font-bold text-slate-950">
+                {day.day}
+              </div>
+              <h3 className="mb-6 text-2xl font-semibold">{day.theme}</h3>
+              <ul className="space-y-4 text-slate-200">
+                {day.items.map((item) => (
+                  <li key={item} className="flex gap-3 leading-7">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      <section className="px-6 py-20 md:px-10">
+        <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-[0.9fr_1.1fr] md:items-center">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="mb-3 text-sm font-semibold tracking-[0.28em] text-amber-700">PLAN</p>
+            <h2 className="text-3xl font-semibold leading-tight md:text-5xl">
+              1日1組限定。深く味わうための農泊リトリート。
+            </h2>
+            <p className="mt-5 text-lg leading-9 text-slate-700">
+              少人数だからこそ、農家、陶芸、地域の人、食卓との距離が近くなる。大量集客ではなく、ひと組に合わせて編集する高付加価値型の体験です。
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="rounded-[2rem] border border-slate-950/10 bg-white p-8 shadow-xl md:p-10"
+          >
+            <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <p className="text-sm font-semibold tracking-[0.2em] text-amber-700">RETREAT PLAN</p>
+                <h3 className="mt-2 text-2xl font-semibold">農と祈りのリトリート</h3>
+              </div>
+              <div className="rounded-2xl bg-[#f2e4cf] px-4 py-3 text-left sm:text-right">
+                <p className="text-sm text-slate-600">1組</p>
+                <p className="text-2xl font-bold">¥100,000〜</p>
+              </div>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {included.map((item) => (
+                <div key={item} className="flex items-start gap-3 rounded-2xl bg-[#faf6ee] p-4">
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-amber-700" />
+                  <p className="text-sm font-medium leading-6 text-slate-800">{item}</p>
+                </div>
+              ))}
+            </div>
+            <p className="mt-6 text-sm leading-7 text-slate-500">
+              ※ 宿泊場所、季節の作物、バラ・へちま体験の内容、ジビエの種類は時期や受入体制により調整します。
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="bg-white/55 px-6 py-20 md:px-10">
+        <SectionTitle
+          eyebrow="LOCATION"
+          title="舞台は、射水市水戸田・青井谷エリア"
+          body="田んぼ、畑、陶芸、里山、人の営みが近い距離で重なる場所。水のサジタリオの世界観を、地域全体で体験するためのフィールドです。"
+        />
+        <div className="mx-auto grid max-w-7xl gap-5 md:grid-cols-4">
+          {[
+            { icon: <MapPin className="h-5 w-5" />, label: "射水市水戸田・青井谷" },
+            { icon: <Sprout className="h-5 w-5" />, label: "自然栽培の田んぼと畑" },
+            { icon: <Heart className="h-5 w-5" />, label: "匠の里での陶芸体験" },
+            { icon: <Users className="h-5 w-5" />, label: "地元の人との語らい" },
+          ].map((item) => (
+            <div key={item.label} className="rounded-3xl bg-white p-6 text-center shadow-sm">
+              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-950 text-white">
+                {item.icon}
+              </div>
+              <p className="font-semibold leading-7">{item.label}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="reserve" className="px-6 py-20 md:px-10">
+        <div className="mx-auto max-w-5xl rounded-[2rem] bg-gradient-to-br from-slate-950 to-slate-800 p-8 text-center text-white shadow-2xl md:p-14">
+          <Moon className="mx-auto mb-6 h-12 w-12 text-amber-300" />
+          <h2 className="text-3xl font-semibold leading-tight md:text-5xl">まずは、モニター1組から。</h2>
+          <p className="mx-auto mt-5 max-w-3xl text-lg leading-9 text-slate-200">
+            季節、参加者の属性、地域の受入体制に合わせて内容を調整しながら、最初の1組限定モニターとして実施する想定です。写真、感想、改善点を集め、正式販売へつなげます。
+          </p>
+          <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+            <a
+              href="mailto:info@example.com?subject=%E8%BE%B2%E3%81%A8%E7%A5%88%E3%82%8A%E3%81%AE%E3%83%AA%E3%83%88%E3%83%AA%E3%83%BC%E3%83%88%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-amber-300 px-7 py-4 text-base font-bold text-slate-950 shadow-lg transition hover:-translate-y-0.5 hover:bg-amber-200"
+            >
+              相談する
+              <ArrowRight className="h-5 w-5" />
             </a>
             <a
-              className="inline-flex items-center justify-center rounded-full border border-sagittarius-gold/80 px-8 py-4 text-sm font-semibold tracking-[0.18em] text-white transition hover:-translate-y-0.5 hover:bg-sagittarius-gold hover:text-sagittarius-navy"
-              href="mailto:info@example.com?subject=%E5%8F%96%E6%89%B1%E3%81%84%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"
+              href="#itinerary"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 py-4 text-base font-bold text-white transition hover:-translate-y-0.5 hover:bg-white/15"
             >
-              取扱いについて相談する
+              旅程をもう一度見る
             </a>
           </div>
         </div>
       </section>
 
-      <footer className="bg-sagittarius-deep px-5 py-10 text-white md:px-8">
-        <div className="mx-auto flex max-w-7xl flex-col gap-8 md:flex-row md:items-center md:justify-between">
-          <Logo />
-          <p className="max-w-xl text-sm leading-7 text-white/62">
-            水のサジタリオ / 射水のスローベジタブル。私を整え、家族を育む、引き算の食卓を、射水の水と土の記憶とともに静かに届けます。
-          </p>
-          <div className="flex gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-white/64">
-            <a className="transition hover:text-sagittarius-water" href="#">
-              インスタグラム
-            </a>
-            <a className="transition hover:text-sagittarius-water" href="#">
-              エックス
-            </a>
-          </div>
+      <footer className="border-t border-slate-950/10 px-6 py-10 md:px-10">
+        <div className="mx-auto flex max-w-7xl flex-col gap-4 text-sm text-slate-600 md:flex-row md:items-center md:justify-between">
+          <p className="font-semibold text-slate-950">水のサジタリオ presents 農と祈りのリトリート</p>
+          <p>© Mizuno Sagittario Retreat. All rights reserved.</p>
         </div>
       </footer>
     </main>

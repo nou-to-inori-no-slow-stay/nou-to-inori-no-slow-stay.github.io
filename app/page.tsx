@@ -354,6 +354,43 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="bg-[#f7fbf8] px-6 py-20 md:px-10">
+        <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[0.95fr_1.05fr] md:items-center">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="mb-3 text-sm font-semibold text-teal-700">ROSE GATHERING</p>
+            <h2 className="text-3xl font-semibold leading-tight text-slate-950 md:text-5xl">
+              朝露をまとったバラを、自分の手で摘む。
+            </h2>
+            <p className="mt-5 text-lg leading-9 text-slate-700">
+              光がやわらかいうちに畑へ入り、香りのいちばん豊かな瞬間をすくい上げるように花を摘んでいく体験です。籠に少しずつ集まる色と香りが、旅の記憶そのものになっていきます。
+            </p>
+            <p className="mt-4 text-base leading-8 text-slate-600">
+              摘んだバラはドリンクや香りの時間へとつながり、見るだけでは終わらない「持ち帰れる余韻」をつくります。
+            </p>
+          </motion.div>
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.08 }}
+            className="overflow-hidden shadow-[0_28px_90px_rgba(5,34,45,0.14)]"
+          >
+            <img
+              src="/rose-harvest.png"
+              alt="バラ畑で花を摘む参加者のイメージ"
+              className="h-[520px] w-full object-cover"
+            />
+          </motion.div>
+        </div>
+      </section>
+
       <section className="bg-[#eaf3ee] px-6 py-20 md:px-10">
         <SectionTitle
           eyebrow="SEVEN ELEMENTS"

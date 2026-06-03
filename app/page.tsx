@@ -302,10 +302,10 @@ export default function Home() {
             <p className="mb-3 text-sm font-semibold text-teal-700">PRAYER LANDSCAPE</p>
             <h2 className="text-3xl font-semibold leading-tight text-slate-950 md:text-5xl">畑の上で、呼吸をそろえる。</h2>
             <p className="mt-5 text-lg leading-9 text-slate-700">
-              朝の光と土の匂いに包まれながら、ただ座って呼吸を整える時間。観光でも修行でもない、土地の気配に自分をひらいていく静かな入口です。
+              朝の光と土の匂いに包まれながら、ただ座って呼吸を整えるアグリマインドフルネスの時間。観光でも修行でもない、土地の気配に自分をひらいていく静かな入口です。
             </p>
             <p className="mt-4 text-base leading-8 text-slate-600">
-              食べることやつくることの前に、まず身体と心をほどく。この風景が、旅全体のトーンをやわらかく定めてくれます。
+              食べることやつくることの前に、まず身体と心をほどき、畑の気配に意識を澄ませる。この風景が、旅全体のトーンをやわらかく定めてくれます。
             </p>
           </motion.div>
         </div>

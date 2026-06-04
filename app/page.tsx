@@ -312,6 +312,60 @@ export default function Home() {
       </section>
 
       <section className="bg-[#f7fbf8] px-6 py-20 md:px-10">
+        <div className="mx-auto max-w-7xl rounded-[2rem] border border-teal-900/10 bg-[linear-gradient(135deg,rgba(234,243,238,0.92),rgba(255,255,255,0.98))] p-8 shadow-[0_28px_90px_rgba(5,34,45,0.08)] md:p-12">
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6 }}>
+            <p className="mb-3 text-sm font-semibold text-teal-700">AGRI HEALING</p>
+            <h2 className="text-3xl font-semibold leading-tight text-slate-950 md:text-5xl">土に触れ、香りを吸い込み、身体の速度をほどいていく。</h2>
+            <p className="mt-5 max-w-4xl text-lg leading-9 text-slate-700">
+              このスローステイには、農に触れることそのものが心身を整えていくアグリヒーリングの要素があります。畑の風、土の温度、草木の香り、
+              手を動かす静かなリズムが、考えすぎた頭をほどき、呼吸をゆるやかに日常へ引き戻してくれます。
+            </p>
+          </motion.div>
+          <div className="mt-10 grid gap-4 md:grid-cols-3">
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.55 }}
+              className="border border-teal-900/10 bg-white/90 p-6 shadow-sm"
+            >
+              <p className="text-sm font-semibold text-teal-700">触れる</p>
+              <p className="mt-3 leading-7 text-slate-700">
+                土や器、へちまの手ざわりに触れることで、感覚が外の世界へひらき、身体の輪郭をやさしく取り戻していきます。
+              </p>
+            </motion.div>
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.55, delay: 0.05 }}
+              className="border border-teal-900/10 bg-white/90 p-6 shadow-sm"
+            >
+              <p className="text-sm font-semibold text-teal-700">香る</p>
+              <p className="mt-3 leading-7 text-slate-700">
+                朝露のバラや畑の青い匂い、焚火とコーヒーの香りが、気分の緊張をほどきながら内側の深い呼吸を誘います。
+              </p>
+            </motion.div>
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.55, delay: 0.1 }}
+              className="border border-teal-900/10 bg-white/90 p-6 shadow-sm"
+            >
+              <p className="text-sm font-semibold text-teal-700">整う</p>
+              <p className="mt-3 leading-7 text-slate-700">
+                誰かに治してもらうのではなく、土地の循環の中に身を置くことで、自分自身の回復力が静かに戻ってくる時間を大切にします。
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#f7fbf8] px-6 py-20 md:px-10">
         <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[0.95fr_1.05fr] md:items-center">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6 }}>
             <p className="mb-3 text-sm font-semibold text-teal-700">ROSE GATHERING</p>
